@@ -20,7 +20,7 @@ struct CognitiveDistortionCard: View {
                         .font(.custom(Font.Custom.calendarBold, size: 22))
                         .padding(.top, 35)
                     
-                    Image("helloAhtty")
+                    Image(CognitiveDistortion.getDiscriptionAndExample(cognitiveDistortionType: distortionPageManager.distortionCardType)["image"]!)
                         .resizable()
                         .scaledToFit()
                         .padding()
