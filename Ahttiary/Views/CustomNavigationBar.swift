@@ -29,9 +29,8 @@ struct CustomNavigationBar: View {
             
             Spacer()
             
-            // For Text position arrangement only
-            Button {
-            } label: { Image(systemName: "chevron.left").foregroundColor(.clear) }
+//          For Text position arrangement only
+            Section(header: Text("")) { Text("") }
 
         }// HStack
     }// body
