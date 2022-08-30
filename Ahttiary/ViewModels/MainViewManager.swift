@@ -13,14 +13,18 @@ final class MainViewManager: ObservableObject {
     @Published var noteArray: [FetchedResults<Note>.Element] = []
     var myNote: FetchedResults<Note>.Element? = nil
     
-    func goToMainView() { pageName = .main }
-
-    func goToWritingView() { pageName = .writing }
+    func goToMainView() {
+        withAnimation { pageName = .main }
+    }
+    
+    func goToWritingView() {
+        withAnimation { pageName = .writing }
+    }
     
     func goToReadingView(_ note: FetchedResults<Note>.Element?) {
         guard let note = note else { return }
         self.myNote = note
-        pageName = .reading
+        withAnimation { pageName = .reading }
     }
         
     func updateNote(_ note: FetchedResults<Note>.Element?) {
