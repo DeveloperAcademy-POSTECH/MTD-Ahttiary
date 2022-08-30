@@ -15,6 +15,7 @@ final class MainViewManager: ObservableObject {
     
     func goToMainView() {
         withAnimation { pageName = .main }
+//        pageName = .main
     }
     
     func goToWritingView() {
