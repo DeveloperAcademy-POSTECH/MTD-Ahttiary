@@ -55,7 +55,11 @@ struct WritePageView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 5)
             
+                        
             Spacer()
+            
+            Text(noteManager.fetchCurrentPage() + "/7")
+                .font(.custom(Font.Custom.comment, size: 20))
             
             // 페이지 전환 버튼
             HStack(spacing: 20) {
@@ -77,4 +81,5 @@ struct WritePageView: View {
         .background(Color.Custom.background.ignoresSafeArea())
         .onAppear { UITextView.appearance().backgroundColor = .clear }
     }
+        
 }

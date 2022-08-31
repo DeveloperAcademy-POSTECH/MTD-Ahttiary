@@ -21,7 +21,7 @@ struct MainView: View {
         
         if selectedNote != nil {
             updateToReadNote(selectedNote!)
-            return "감정 읽기"
+            return "감정 기록 읽기"
         }
         else {
             updateToReadNote(nil)
@@ -32,11 +32,11 @@ struct MainView: View {
     var body: some View {
         VStack {
             CalendarView()
-                .padding(.vertical)
             
             HStack (alignment: .center) {
                 Image("helloAhtty")
                     .resizable()
+                    .frame(width: 150, height: 150)
                 
                 Spacer()
                 
@@ -44,15 +44,11 @@ struct MainView: View {
                     .font(.custom(Font.Custom.comment, size: 20))
             }
             .padding(.horizontal, 36)
-            .padding(.bottom, 90)
+            .padding(.bottom, 60)
             
             Button {
-                if myNote == nil {
-                    mainViewModel.goToWritingView()
-                }
-                else {
-                    mainViewModel.goToReadingView(myNote)
-                }
+                if myNote == nil { mainViewModel.goToWritingView() }
+                else { mainViewModel.goToReadingView(myNote) }
             } label: {
                 ZStack (alignment: .center) {
                     RoundedRectangle(cornerRadius: 10)
@@ -65,7 +61,7 @@ struct MainView: View {
                 .frame(minWidth: 250, maxHeight: 50)
             }
             .padding(.horizontal, 70)
-            .padding(.bottom, 32)
+            .padding(.bottom, 58)
             
         }// VStack
         .padding(.horizontal, 20)

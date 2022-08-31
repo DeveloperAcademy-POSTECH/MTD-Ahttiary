@@ -12,7 +12,7 @@ struct Font {
         static let comment = "나눔손글씨 힘내라는 말보단"
         static let calendarBold = "GangwonEduAll-OTFBold"
         static let calendarLight = "GangwonEduAll-OTFLight"
-//        static let weekDay = "Poppins-Regular"
+        static let weekDay = "Poppins-Regular"
     }
 }
 

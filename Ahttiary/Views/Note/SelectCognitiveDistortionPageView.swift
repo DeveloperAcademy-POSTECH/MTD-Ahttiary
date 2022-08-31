@@ -54,8 +54,11 @@ struct SelectCognitiveDistortionPageView: View {
                     }// LazyVGrid
                 }// ScrollView
                 .padding(.horizontal)
-                
+                                
                 Spacer()
+                
+                Text(noteManager.fetchCurrentPage() + "/7")
+                    .font(.custom(Font.Custom.comment, size: 20))
                 
                 // 화면 전환 버튼
                 HStack(spacing: 20) {
