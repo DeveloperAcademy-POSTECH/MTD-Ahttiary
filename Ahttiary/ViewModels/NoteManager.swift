@@ -61,4 +61,9 @@ final class NoteManager: ObservableObject {
     func goToLastPage() {
         pageNumber = lastPageNumber
     }
+    
+    func fetchCurrentPage() -> String {
+        return "\(pageNumber + 1)"
+    }
+
 }
