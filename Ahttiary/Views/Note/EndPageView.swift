@@ -12,12 +12,16 @@ struct EndPageView: View {
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var mainViewModel: MainViewManager
     @EnvironmentObject var dateManager: DateViewModel
+    var draftNote: DraftNote
     
     let imageName: String
     
     var body: some View {
         VStack {
-            CustomNavigationBar(displayDate: dateManager.selectedDate)
+            CustomNavigationBar(
+                displayDate: dateManager.selectedDate,
+                draftNote: draftNote
+            )
                 .padding()
             
             Spacer()

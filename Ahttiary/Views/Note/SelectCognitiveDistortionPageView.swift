@@ -15,12 +15,16 @@ struct SelectCognitiveDistortionPageView: View {
     
     @Binding var answer: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    var draftNote: DraftNote
     let imageName: String
     
     var body: some View {
         ZStack {
             VStack {
-                CustomNavigationBar(displayDate: dateManager.selectedDate)
+                CustomNavigationBar(
+                    displayDate: dateManager.selectedDate,
+                    draftNote: draftNote
+                )
                     .padding()
                 
                 // 아띠와 말풍선
