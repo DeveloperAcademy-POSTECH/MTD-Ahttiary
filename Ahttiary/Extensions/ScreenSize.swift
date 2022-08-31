@@ -18,8 +18,7 @@ enum ScreenSize {
     static var answerMessageBoxHeight: CGFloat { answerMessageBoxWidth }
     static var answerMessageBoxWidth: CGFloat { ScreenSize.fullWidth * (1) }
     
-    static var distortionCardHeight: CGFloat { ScreenSize.fullWidth * (2 / 3) }
-    static var distortionCardWidth: CGFloat { ScreenSize.fullWidth * (2 / 3) }
+    static var distortionCardWidth: CGFloat { ScreenSize.fullWidth * (4 / 5) }
     
     static var questionMessageBoxHeight: CGFloat { questionMessageBoxWidth * (1 / 2) }
     static var questionMessageBoxWidth: CGFloat { ScreenSize.fullWidth * (2 / 3) }

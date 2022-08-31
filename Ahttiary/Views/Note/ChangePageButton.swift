@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-struct CustomButton: View {
+struct ChangePageButton: View {
+    
     var title: String
+    var buttonLength: Double
     var action: () -> Void
     
-    init(_ title: String, action: @escaping () -> Void) {
+    init(_ title: String, _ buttonLength: ButtonLength = .short, action: @escaping () -> Void) {
         self.title = title
+        
+        switch buttonLength {
+        case .short:
+            self.buttonLength = 120
+        case .long:
+            self.buttonLength = 260
+        }
+        
         self.action = action
     }
     
@@ -28,14 +38,22 @@ struct CustomButton: View {
                     .font(.custom(Font.Custom.calendarBold, size: 20))
                     .foregroundColor(.white)
             }
-            .frame(maxWidth: 120, maxHeight: 50)
         }
+        .frame(width: buttonLength, height: 50)
+        .padding(.bottom, 12)
+    }
+}
+
+extension ChangePageButton {
+    
+    enum ButtonLength {
+        case short, long
     }
 }
 
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton("테스트") {
+        ChangePageButton("테스트") {
             print("테스트")
         }
     }

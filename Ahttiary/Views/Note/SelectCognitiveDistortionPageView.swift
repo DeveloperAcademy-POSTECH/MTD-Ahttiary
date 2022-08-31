@@ -15,12 +15,16 @@ struct SelectCognitiveDistortionPageView: View {
     
     @Binding var answer: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    var draftNote: DraftNote
     let imageName: String
     
     var body: some View {
         ZStack {
             VStack {
-                CustomNavigationBar(displayDate: dateManager.selectedDate)
+                CustomNavigationBar(
+                    displayDate: dateManager.selectedDate,
+                    draftNote: draftNote
+                )
                     .padding()
                 
                 // 아띠와 말풍선
@@ -53,17 +57,17 @@ struct SelectCognitiveDistortionPageView: View {
                         }// ForEach
                     }// LazyVGrid
                 }// ScrollView
-                .padding(.horizontal, 10)
+                .padding(.horizontal)
                 
                 Spacer()
                 
                 // 화면 전환 버튼
                 HStack(spacing: 20) {
-                    CustomButton("이전") {
+                    ChangePageButton("이전") {
                         noteManager.goToPreviousPage()
                     }
                     
-                    CustomButton("선택 완료") {
+                    ChangePageButton("선택 완료") {
                         noteManager.goToNextPage()
                     }
                     .disabled(answer.isEmpty)
@@ -79,7 +83,7 @@ struct SelectCognitiveDistortionPageView: View {
                 Color.black.opacity(0.2)
                     .ignoresSafeArea()
                 CognitiveDistortionCard(distortionPageManager: distortionPageManager)
-                    .frame(width: ScreenSize.distortionCardWidth, height: ScreenSize.distortionCardHeight, alignment: .center)
+                    .frame(width: ScreenSize.distortionCardWidth, height: ScreenSize.distortionCardWidth * 1.4, alignment: .center)
             }
             
         }// VStack

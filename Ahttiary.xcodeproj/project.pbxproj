@@ -49,7 +49,7 @@
 		F8622D2728AA9C5F008908CB /* WriteNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2228AA9C5F008908CB /* WriteNoteView.swift */; };
 		F8622D2828AA9C5F008908CB /* WritePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2328AA9C5F008908CB /* WritePageView.swift */; };
 		F8622D2A28AAB38D008908CB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2928AAB38D008908CB /* Date.swift */; };
-		F8622D2C28AAB724008908CB /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2B28AAB724008908CB /* CustomButton.swift */; };
+		F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2B28AAB724008908CB /* ChangePageButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +98,7 @@
 		F8622D2228AA9C5F008908CB /* WriteNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteView.swift; sourceTree = "<group>"; };
 		F8622D2328AA9C5F008908CB /* WritePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritePageView.swift; sourceTree = "<group>"; };
 		F8622D2928AAB38D008908CB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		F8622D2B28AAB724008908CB /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		F8622D2B28AAB724008908CB /* ChangePageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePageButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +247,7 @@
 				F8622D2128AA9C5F008908CB /* TemporaryListView.swift */,
 				F8622D2228AA9C5F008908CB /* WriteNoteView.swift */,
 				F8622D2328AA9C5F008908CB /* WritePageView.swift */,
-				F8622D2B28AAB724008908CB /* CustomButton.swift */,
+				F8622D2B28AAB724008908CB /* ChangePageButton.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 				F8622D1928AA9C3B008908CB /* Note.swift in Sources */,
 				7AD34AAD288F932E00E92B73 /* AhttiaryApp.swift in Sources */,
 				8906A86C28ADE19400C1E254 /* MainViewManager.swift in Sources */,
-				F8622D2C28AAB724008908CB /* CustomButton.swift in Sources */,
+				F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */,
 				7AD34AC2288F947700E92B73 /* Model.swift in Sources */,
 				7A3BA2FB289ABB9A002ABB95 /* CurrentMonthView.swift in Sources */,
 				7A3BA30E289C0FD0002ABB95 /* MonthStruct.swift in Sources */,
@@ -489,7 +489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "아띠어리.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ahttiary/Preview Content\"";
@@ -511,7 +511,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtd.ahttiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ahttiaryDevelopment;
+				PROVISIONING_PROFILE_SPECIFIER = ahttiaryDistribution;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

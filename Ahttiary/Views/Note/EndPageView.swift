@@ -12,12 +12,16 @@ struct EndPageView: View {
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var mainViewModel: MainViewManager
     @EnvironmentObject var dateManager: DateViewModel
+    var draftNote: DraftNote
     
     let imageName: String
     
     var body: some View {
         VStack {
-            CustomNavigationBar(displayDate: dateManager.selectedDate)
+            CustomNavigationBar(
+                displayDate: dateManager.selectedDate,
+                draftNote: draftNote
+            )
                 .padding()
             
             Spacer()
@@ -43,8 +47,8 @@ struct EndPageView: View {
             
             // 페이지 전환 버튼
             HStack(spacing: 20) {
-                CustomButton("이전") { noteManager.goToPreviousPage() }
-                CustomButton("종료하기") { mainViewModel.goToMainView() }
+                ChangePageButton("이전") { noteManager.goToPreviousPage() }
+                ChangePageButton("종료하기") { mainViewModel.goToMainView() }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

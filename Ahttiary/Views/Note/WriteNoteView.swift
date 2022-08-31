@@ -22,30 +22,35 @@ struct WriteNoteView: View {
                 WritePageView(
                     noteManager: noteManager,
                     answer: $draftNote.firstAnswer,
+                    draftNote: draftNote,
                     imageName: "noteAhtty"
                 )
             case 1:
                 WritePageView(
                     noteManager: noteManager,
                     answer: $draftNote.secondAnswer,
+                    draftNote: draftNote,
                     imageName: "bbaeggomAhtty"
                 )
             case 2:
                 SelectEmotionPageView(
                     noteManager: noteManager,
                     answer: $draftNote.firstEmotion,
-                    imageName: "selectinAhtty"
+                    imageName: "selectinAhtty",
+                    draftNote: draftNote
                 )
             case 3:
                 WritePageView(
                     noteManager: noteManager,
                     answer: $draftNote.thirdAnswer,
+                    draftNote: draftNote,
                     imageName: "questionAhtty"
                 )
             case 4:
                 SelectCognitiveDistortionPageView(
                     noteManager: noteManager,
                     answer: $draftNote.fourthAnswer,
+                    draftNote: draftNote,
                     imageName: "helloAhtty"
                 )
             case 5:
@@ -53,6 +58,7 @@ struct WriteNoteView: View {
                 WritePageView(
                     noteManager: noteManager,
                     answer: $draftNote.fifthAnswer,
+                    draftNote: draftNote,
                     imageName: "thinkinAhtty"
                 )
             case 6:
@@ -60,12 +66,14 @@ struct WriteNoteView: View {
                 SelectEmotionPageView(
                     noteManager: noteManager,
                     answer: $draftNote.secondEmotion,
-                    imageName: "selectinAhtty"
+                    imageName: "selectinAhtty",
+                    draftNote: draftNote
                 )
             case 7:
                 // 마지막 페이지(내일도 즐거운 하루 보내자!)
                 EndPageView(
                     noteManager: noteManager,
+                    draftNote: draftNote,
                     imageName: "helloAhtty"
                 )
             default:
@@ -74,7 +82,7 @@ struct WriteNoteView: View {
         }
         .background(Color.Custom.background)
         .onChange(of: noteManager.pageNumber) { _ in
-                Note.updateNote(using: draftNote)
+            Note.updateNote(using: draftNote)
         }
     } // End of body
 } // WriteNoteView

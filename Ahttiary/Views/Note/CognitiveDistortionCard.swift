@@ -14,33 +14,32 @@ struct CognitiveDistortionCard: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 30)
             .foregroundColor(Color.Custom.background)
-            .frame(width: ScreenSize.fullWidth, height: ScreenSize.fullWidth * 1.4)
             .overlay {
                 VStack {
                     Text(CognitiveDistortion.getDiscriptionAndExample(cognitiveDistortionType: distortionPageManager.distortionCardType)["name"]!)
-                        .font(.custom(Font.Custom.comment, size: 32))
+                        .font(.custom(Font.Custom.calendarBold, size: 22))
                         .padding(.top, 35)
-
-                    Image("helloAhtty")
+                    
+                    Image(CognitiveDistortion.getDiscriptionAndExample(cognitiveDistortionType: distortionPageManager.distortionCardType)["image"]!)
                         .resizable()
                         .scaledToFit()
                         .padding()
                     
                     Text(CognitiveDistortion.getDiscriptionAndExample(cognitiveDistortionType: distortionPageManager.distortionCardType)["description"]!)
-                        .font(.custom(Font.Custom.comment, size: 24))
+                        .font(.custom(Font.Custom.calendarBold, size: 17))
                         .padding()
                     
                     Text("예시) \(CognitiveDistortion.getDiscriptionAndExample(cognitiveDistortionType: distortionPageManager.distortionCardType)["example"]!)")
-                        .font(.custom(Font.Custom.comment, size: 22))
+                        .font(.custom(Font.Custom.calendarBold, size: 15))
                         .padding()
                     
                     Spacer()
                     
-                    CustomButton("확인") { withAnimation { distortionPageManager.isShowingDistortionCard.toggle() } }
-                        .padding(.bottom)
+                    ChangePageButton("확인") {
+                        withAnimation { distortionPageManager.isShowingDistortionCard.toggle() }
+                    }
+                    .padding(.bottom)
                 }
             }
-            .scaleEffect(0.8)
-        
     }// body
 }// CognitiveDistortionCard

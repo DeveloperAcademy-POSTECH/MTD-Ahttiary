@@ -9,37 +9,38 @@ import SwiftUI
 
 struct CustomNavigationBar: View {
     @EnvironmentObject var mainViewModel: MainViewManager
+    @State var isPresented: Bool = false
     let displayDate: Date
+    let draftNote: DraftNote
     
     var body: some View {
         HStack {
             Button {
-                mainViewModel.goToMainView()
+                self.isPresented = true
             } label: {
                 Image(systemName: "chevron.left")
                     .foregroundColor(Color.Custom.carrotGreen)
                     .font(.headline)
             }
+            .alert("알림", isPresented: $isPresented) {
+                Button("취소") { }
+                Button("돌아가기") {
+                    Note.updateNote(using: draftNote)
+                    mainViewModel.goToMainView()
+                }
+            } message: { Text("작성 중인 내용을 저장하고 메인 화면으로 돌아갈까요?") }
 
             Spacer()
             
             Text(displayDate.convertToDisplayedDate())
-                .font(.custom(Font.Custom.comment, size: 20))
+                .font(.custom(Font.Custom.calendarBold, size: 22))
                 .foregroundColor(.black)
             
             Spacer()
             
-            // For Text position arrangement only
-            Button {
-            } label: { Image(systemName: "chevron.left").foregroundColor(.clear) }
+//          For Text position arrangement only
+            Section(header: Text("")) { Text("") }
 
         }// HStack
     }// body
 }// CustomNavigationBar
-
-struct CustomNavigationBar_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomNavigationBar(displayDate: Date())
-            .previewLayout(.sizeThatFits)
-    }
-}
