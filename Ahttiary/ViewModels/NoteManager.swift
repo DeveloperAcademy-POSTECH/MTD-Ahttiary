@@ -20,22 +20,22 @@ final class NoteManager: ObservableObject {
             Comment.situationComment.randomElement()!,
             
             // 1. 정서 기술
-            Comment.sentimentComment.randomElement()!,
+            Comment.feelingComment.randomElement()!,
             
             // 2. 첫 번째 감정 선택
-            Comment.selectEmoticonComment,
+            Comment.selectEmotionComment,
             
             // 3. 자동적 사고
-            Comment.unconsciousnessComment.randomElement()!,
+            Comment.automaticThoughtComment.randomElement()!,
             
             // 4. 인지 왜곡 선택
             Comment.cognitiveDistortionComment.randomElement()!,
             
             // 5. 합리적 반응
-            Comment.rationalComment.randomElement()!,
+            Comment.rationalizationComment.randomElement()!,
             
             // 6. 두 번째 감정 선택
-            Comment.selectEmoticonComment,
+            Comment.selectEmotionComment,
             
             // 7. 결과
             Comment.resultComment.randomElement()!
