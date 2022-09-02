@@ -16,5 +16,6 @@ extension Color {
         static let carrot: Color = Color("carrot")
         static let carrotGreen: Color = Color("carrotGreen")
         static let cardBackground: Color = Color("cardBackground")
+        static let fontGray: Color = Color("fontGray")
     }
 }

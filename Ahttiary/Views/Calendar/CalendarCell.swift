@@ -28,7 +28,7 @@ struct CalendarCell: View {
                 if detectNoteData() { Image("carrot").scaleEffect(0.75) }
                 
                 Text(fetchMonthStruct().day())
-                    .font(.custom(Font.Custom.calendarBold, size: 20))
+                    .font(.custom(Font.Custom.weekDay, size: 14))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundColor(
                         detectNoteData()
@@ -38,7 +38,7 @@ struct CalendarCell: View {
                         : dateManager.verifySelectedDay(dayOfThisCell)
                             ? .white
                             : dateManager.verifyFutureDate(dayOfThisCell)
-                                ? .gray
+                                ? Color.Custom.fontGray
                                 : .black
                     )
                     .onTapGesture {

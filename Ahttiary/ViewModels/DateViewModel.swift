@@ -21,6 +21,10 @@ final class DateViewModel: ObservableObject {
         date = nextMonth
     }
     
+    func fetchCurrentDate() {
+        date = Date()
+    }
+    
     func updateSelectedDate(_ selectedDay: Int) {
         let originalDay = Calendar.current.dateComponents([.day], from: date).day!
         guard let changedDate = Calendar.current.date(byAdding: .day, value: selectedDay - originalDay, to: date) else { return }
@@ -33,11 +37,14 @@ final class DateViewModel: ObservableObject {
         let componentsOfGlobalDate = Calendar.current.dateComponents([.year, .month, .day], from: globalDate)
         let componentsOfCurrentDate = Calendar.current.dateComponents([.year, .month, .day], from: date)
         
-        if componentsOfCurrentDate.year! > componentsOfGlobalDate.year! { return true }
-        if componentsOfCurrentDate.month! > componentsOfGlobalDate.month! { return true }
-        if componentsOfCurrentDate.month! == componentsOfGlobalDate.month! &&
-           today > componentsOfGlobalDate.day!
-        { return true }
+        // 미래 연도의 경우 모든 경우의 수를 true로 반환합니다.
+        if componentsOfCurrentDate.year! > componentsOfGlobalDate.year! { return true } // 미래 연도
+
+        // 동일 연도의 경우 미래 월인 경우는 항상 true를, 같은 달의 경우 미래 일을 true로 반환합니다.
+        if componentsOfCurrentDate.year! == componentsOfGlobalDate.year! {
+            if componentsOfCurrentDate.month! > componentsOfGlobalDate.month! { return true } // 미래 월
+            if componentsOfCurrentDate.month! == componentsOfGlobalDate.month! && today > componentsOfGlobalDate.day! { return true }// 동월 내 미래 일
+        }
         
         return false
     }
