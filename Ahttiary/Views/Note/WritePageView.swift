@@ -11,6 +11,7 @@ struct WritePageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var dateManager: DateViewModel
+    var emotion: String
     @Binding var answer: String
     @FocusState var isTextFieldsFocused: Bool
     
@@ -28,7 +29,7 @@ struct WritePageView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: ScreenSize.ahttyWriterWidth)
                 
-                Text(noteManager.randomComments[noteManager.pageNumber])
+                Text(noteManager.getCurrentPageRandomComment(emotion: emotion))
                     .frame(
                         height: ScreenSize.questionMessageBoxHeight,
                         alignment: .center
@@ -70,7 +71,6 @@ struct WritePageView: View {
                         .disabled(answer.isEmpty)
                         .opacity(answer.isEmpty ? 0.7 : 1)
                 }
-                
             }
         } // End of VStack
         .frame(maxWidth: .infinity, maxHeight: .infinity)
