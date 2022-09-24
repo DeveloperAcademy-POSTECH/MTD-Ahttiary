@@ -42,7 +42,7 @@ struct SelectEmotionPageView: View {
             // 감정 선택 그리드
             LazyVGrid(columns: gridItemLayout) {
                 ForEach(
-                    noteManager.pageNumber == 2 ? EmotionStruct.firstEmotionArray : EmotionStruct.secondEmotionArray,
+                    EmotionStruct.firstEmotionArray,
                     id: \.self
                 ) { emotion in
                     EmotionCard(answer: $answer, emotion: emotion)
