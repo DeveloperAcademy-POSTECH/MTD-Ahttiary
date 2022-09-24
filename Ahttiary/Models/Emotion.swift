@@ -12,13 +12,6 @@ struct EmotionStruct {
         .angry,
         .sad,
         .irritated,
-        .scared
-    ]
-    
-    static let secondEmotionArray: [Emotion] = [
-        .angry,
-        .sad,
-        .irritated,
         .scared,
         .satisfied,
         .happy
