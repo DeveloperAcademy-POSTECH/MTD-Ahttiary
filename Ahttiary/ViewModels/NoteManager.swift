@@ -61,4 +61,33 @@ final class NoteManager: ObservableObject {
     func goToLastPage() {
         pageNumber = lastPageNumber
     }
+    
+    func getCurrentPageRandomComment(emotion: String) -> String {
+        let emotions = ["angry", "sad", "irritated", "scared"]
+        
+        switch pageNumber {
+        case 0:
+            return Comment.situationComment.randomElement()!
+        case 1:
+            return Comment.selectEmoticonComment
+        case 2:
+            if emotions.contains(emotion) {
+                // 부정적 감정 선택 시: 자동적 사고
+                return Comment.unconsciousnessComment.randomElement()!
+            } else {
+                // 긍정적 감정 선택 시: 긍정적 경험 서술
+                return Comment.describePositiveExperienceComment.randomElement()!
+            }
+        case 3:
+            if emotions.contains(emotion) {
+                // 부정적 감정 선택 시: 합리적 반응
+                return Comment.rationalComment.randomElement()!
+            } else {
+                // 긍정적 감정 선택 시: 긍정적 경험 발전
+                return Comment.enhancePositiveExperienceComment.randomElement()!
+            }
+        default:
+            return ""
+        }
+    }
 }
