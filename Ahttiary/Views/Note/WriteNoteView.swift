@@ -23,6 +23,7 @@ struct WriteNoteView: View {
                 WritePageView(
                     noteManager: noteManager,
                     emotion: draftNote.secondAnswer,
+                    comment: $draftNote.firstComment,
                     answer: $draftNote.firstAnswer,
                     imageName: "noteAhtty"
                 )
@@ -30,6 +31,7 @@ struct WriteNoteView: View {
                 // 감정 선택
                 SelectEmotionPageView(
                     noteManager: noteManager,
+                    comment: $draftNote.secondComment,
                     answer: $draftNote.secondAnswer,
                     imageName: "selectinAhtty"
                 )
@@ -39,6 +41,7 @@ struct WriteNoteView: View {
                 WritePageView(
                     noteManager: noteManager,
                     emotion: draftNote.secondAnswer,
+                    comment: $draftNote.secondComment,
                     answer: $draftNote.thirdAnswer,
                     imageName: "questionAhtty"
                 )
@@ -48,6 +51,7 @@ struct WriteNoteView: View {
                 WritePageView(
                     noteManager: noteManager,
                     emotion: draftNote.secondAnswer,
+                    comment: $draftNote.thirdComment,
                     answer: $draftNote.fourthAnswer,
                     imageName: "helloAhtty"
                 )

@@ -11,10 +11,18 @@ struct SelectEmotionPageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var dateManager: DateViewModel
+    @Binding var comment: String
     @Binding var answer: String
     @FocusState var isTextFieldsFocused: Bool
     let imageName: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    init(noteManager: NoteManager, comment: Binding<String>, answer: Binding<String>, imageName: String) {
+        self.noteManager = noteManager
+        _comment = comment
+        _answer = answer
+        self.imageName = imageName
+    }
     
     var body: some View {
         VStack {
