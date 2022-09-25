@@ -37,7 +37,7 @@ struct CognitiveDistortionCell: View {
                     .padding(.trailing)
                     .padding(.top)
                     
-                    Image("helloAhtty")
+                    Image(CognitiveDistortion.getDiscriptionAndExample(cognitiveDistortionType: type)["image"]!)
                         .resizable()
                         .padding(.horizontal)
                     

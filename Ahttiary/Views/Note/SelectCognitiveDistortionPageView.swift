@@ -15,12 +15,16 @@ struct SelectCognitiveDistortionPageView: View {
     
     @Binding var answer: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    var draftNote: DraftNote
     let imageName: String
     
     var body: some View {
         ZStack {
             VStack {
-                CustomNavigationBar(displayDate: dateManager.selectedDate)
+                CustomNavigationBar(
+                    displayDate: dateManager.selectedDate,
+                    draftNote: draftNote
+                )
                     .padding()
                 
                 // 아띠와 말풍선
@@ -54,8 +58,11 @@ struct SelectCognitiveDistortionPageView: View {
                     }// LazyVGrid
                 }// ScrollView
                 .padding(.horizontal)
-                
+                                
                 Spacer()
+                
+                Text(noteManager.fetchCurrentPage() + "/7")
+                    .font(.custom(Font.Custom.comment, size: 20))
                 
                 // 화면 전환 버튼
                 HStack(spacing: 20) {

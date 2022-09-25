@@ -15,6 +15,7 @@ struct SelectEmotionPageView: View {
     @Binding var answer: String
     @FocusState var isTextFieldsFocused: Bool
     let imageName: String
+    var draftNote: DraftNote
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     init(noteManager: NoteManager, comment: Binding<String>, answer: Binding<String>, imageName: String) {
@@ -26,7 +27,10 @@ struct SelectEmotionPageView: View {
     
     var body: some View {
         VStack {
-            CustomNavigationBar(displayDate: dateManager.selectedDate)
+            CustomNavigationBar(
+                displayDate: dateManager.selectedDate,
+                draftNote: draftNote
+            )
                 .padding()
             
             // 아띠와 말풍선
@@ -59,10 +63,13 @@ struct SelectEmotionPageView: View {
             
             Spacer()
             
+            Text(noteManager.fetchCurrentPage() + "/7")
+                .font(.custom(Font.Custom.comment, size: 20))
+            
             // 페이지 전환 버튼
             HStack(spacing: 20) {
                 ChangePageButton("이전") { noteManager.goToPreviousPage() }
-                ChangePageButton("선택 완료") { noteManager.goToNextPage() }
+                ChangePageButton("다음") { noteManager.goToNextPage() }
                 .disabled(answer.isEmpty)
                 .opacity(answer.isEmpty ? 0.7 : 1)
             }

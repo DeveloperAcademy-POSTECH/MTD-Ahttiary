@@ -18,8 +18,29 @@ struct CurrentMonthView: View {
     }
     
     var body: some View {
-        Text(currentYearAndMonth)
-            .font(.custom(Font.Custom.calendarBold, size: 22))
+        HStack(alignment: .center) {
+            Button {
+                dateManager.fetchPreviousMonth()
+            } label: {
+                Image(systemName: "chevron.left").foregroundColor(Color.Custom.carrotGreen)
+            }
+            
+            
+            Text(currentYearAndMonth)
+                .font(.custom(Font.Custom.calendarBold, size: 22))
+                .padding(.horizontal, 20)
+                .onTapGesture {
+                    dateManager.fetchCurrentDate()
+                }
+            
+            Button {
+                dateManager.fetchNextMonth()
+            } label: {
+                Image(systemName: "chevron.right").foregroundColor(Color.Custom.carrotGreen)
+            }
+            
+            
+        }
     }// body
     
 }// CurrentMonthView
