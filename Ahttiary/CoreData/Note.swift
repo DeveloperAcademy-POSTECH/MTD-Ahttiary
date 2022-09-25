@@ -14,6 +14,22 @@ extension Note {
         get { dateCreated_ ?? Date() }
         set { dateCreated_ = newValue }
     }
+    var firstComment: String {
+        get { firstComment_ ?? "" }
+        set { firstComment_ = newValue }
+    }
+    var secondComment: String {
+        get { secondComment_ ?? "" }
+        set { secondComment_ = newValue }
+    }
+    var thirdComment: String {
+        get { thirdComment_ ?? "" }
+        set { thirdComment_ = newValue }
+    }
+    var fourthComment: String {
+        get { fourthComment_ ?? "" }
+        set { fourthComment_ = newValue }
+    }
     var firstAnswer: String {
         get { firstAnswer_ ?? "" }
         set { firstAnswer_ = newValue }
@@ -29,18 +45,6 @@ extension Note {
     var fourthAnswer: String {
         get { fourthAnswer_ ?? "" }
         set { fourthAnswer_ = newValue }
-    }
-    var fifthAnswer: String {
-        get { fifthAnswer_ ?? "" }
-        set { fifthAnswer_ = newValue }
-    }
-    var firstEmotion: String {
-        get { firstEmotion_ ?? "" }
-        set { firstEmotion_ = newValue }
-    }
-    var secondEmotion: String {
-        get { secondEmotion_ ?? "" }
-        set { secondEmotion_ = newValue }
     }
     
     // MARK: Fetch Request 모음
@@ -69,11 +73,14 @@ extension Note {
         
         newNote.id = UUID()
         newNote.dateCreated = Date()
+        newNote.firstComment = ""
+        newNote.secondComment = ""
+        newNote.thirdComment = ""
+        newNote.fourthComment = ""
         newNote.firstAnswer = ""
         newNote.secondAnswer = ""
         newNote.thirdAnswer = ""
         newNote.fourthAnswer = ""
-        newNote.fifthAnswer = ""
         
         PersistentStore.shared.saveContext()
     }
@@ -84,11 +91,14 @@ extension Note {
         
         newNote.id = UUID()
         newNote.dateCreated = createdDate
+        newNote.firstComment = ""
+        newNote.secondComment = ""
+        newNote.thirdComment = ""
+        newNote.fourthComment = ""
         newNote.firstAnswer = ""
         newNote.secondAnswer = ""
         newNote.thirdAnswer = ""
         newNote.fourthAnswer = ""
-        newNote.fifthAnswer = ""
         
         return newNote
     }
@@ -115,12 +125,13 @@ extension Note {
     
     private func updateValues(from draftNote: DraftNote) {
         dateCreated_ = draftNote.dateCreated
+        firstComment_ = draftNote.firstComment
+        secondComment_ = draftNote.secondComment
+        thirdComment_ = draftNote.thirdComment
+        fourthComment_ = draftNote.fourthComment
         firstAnswer_ = draftNote.firstAnswer
         secondAnswer_ = draftNote.secondAnswer
         thirdAnswer_ = draftNote.thirdAnswer
         fourthAnswer_ = draftNote.fourthAnswer
-        fifthAnswer_ = draftNote.fifthAnswer
-        firstEmotion_ = draftNote.firstEmotion
-        secondEmotion_ = draftNote.secondEmotion
     }
 }

@@ -22,7 +22,7 @@ struct WriteNoteView: View {
                 // 상황 기록
                 WritePageView(
                     noteManager: noteManager,
-                    emotion: draftNote.firstEmotion,
+                    emotion: draftNote.secondAnswer,
                     answer: $draftNote.firstAnswer,
                     imageName: "noteAhtty"
                 )
@@ -30,7 +30,7 @@ struct WriteNoteView: View {
                 // 감정 선택
                 SelectEmotionPageView(
                     noteManager: noteManager,
-                    answer: $draftNote.firstEmotion,
+                    answer: $draftNote.secondAnswer,
                     imageName: "selectinAhtty"
                 )
             case 2:
@@ -38,8 +38,8 @@ struct WriteNoteView: View {
                 // 부정적 감정의 경우: 감정에 동반된 생각(자동적 사고) 기술
                 WritePageView(
                     noteManager: noteManager,
-                    emotion: draftNote.firstEmotion,
-                    answer: $draftNote.secondAnswer,
+                    emotion: draftNote.secondAnswer,
+                    answer: $draftNote.thirdAnswer,
                     imageName: "questionAhtty"
                 )
             case 3:
@@ -47,8 +47,8 @@ struct WriteNoteView: View {
                 // 부정적 감정의 경우: 이전 단계에서 기록한 생각을 객관적으로 평가
                 WritePageView(
                     noteManager: noteManager,
-                    emotion: draftNote.firstEmotion,
-                    answer: $draftNote.thirdAnswer,
+                    emotion: draftNote.secondAnswer,
+                    answer: $draftNote.fourthAnswer,
                     imageName: "helloAhtty"
                 )
             case 4:
