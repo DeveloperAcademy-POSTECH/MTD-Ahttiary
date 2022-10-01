@@ -22,7 +22,7 @@ struct Comment {
         "오늘 무슨 일이 있었는지 말해줄래?",
         "시작해볼까? 먼저 오늘 무슨 일이 있었는지 알려줘!"
     ]
-        
+    
     // 정서
     static let feelingComment: [String] = [
         "그런 일이 있었구나. 어떤 기분이 들었니?",
@@ -66,7 +66,7 @@ struct Comment {
     ]
     
     // 결과
-    static let resultComment: [String] = [
+    static let lastPageComment: [String] = [
         "좋아! 오늘의 기록이 끝났어. 훌륭해!",
         "휴, 고생했어! 이걸 반복하면 부정적인 생각으로 빠지는 빈도가 점점 줄어들거야!",
         "음. 오늘의 기록이 무사히 끝났어. 다음에 또 만나자!"
