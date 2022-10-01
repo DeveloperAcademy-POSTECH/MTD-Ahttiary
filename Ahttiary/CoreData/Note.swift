@@ -105,7 +105,7 @@ extension Note {
         newNote.dateCreated = Date()
         
         newNote.situationComment = Comment.situationComment.randomElement()!
-        newNote.selectEmotionComment = Comment.selectEmotionComment
+        newNote.selectEmotionComment = Comment.selectEmotionComment.randomElement()!
         newNote.describePositiveExperienceComment = Comment.describePositiveExperienceComment.randomElement()!
         newNote.enhancePositiveExperienceComment = Comment.enhancePositiveExperienceComment.randomElement()!
         newNote.automaticThoughtsComment = Comment.automaticThoughtComment.randomElement()!
@@ -133,7 +133,7 @@ extension Note {
         newNote.dateCreated = createdDate
         
         newNote.situationComment = Comment.situationComment.randomElement()!
-        newNote.selectEmotionComment = Comment.selectEmotionComment
+        newNote.selectEmotionComment = Comment.selectEmotionComment.randomElement()!
         newNote.describePositiveExperienceComment = Comment.describePositiveExperienceComment.randomElement()!
         newNote.enhancePositiveExperienceComment = Comment.enhancePositiveExperienceComment.randomElement()!
         newNote.automaticThoughtsComment = Comment.automaticThoughtComment.randomElement()!
