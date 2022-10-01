@@ -19,57 +19,46 @@ struct WriteNoteView: View {
         Group {
             switch noteManager.pageNumber {
             case 0:
+                // 상황 기록
                 WritePageView(
                     noteManager: noteManager,
+                    emotion: draftNote.secondAnswer,
+                    comment: $draftNote.firstComment,
                     answer: $draftNote.firstAnswer,
                     draftNote: draftNote,
                     imageName: "noteAhtty"
                 )
             case 1:
-                WritePageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.secondAnswer,
-                    draftNote: draftNote,
-                    imageName: "bbaeggomAhtty"
-                )
-            case 2:
+                // 감정 선택
                 SelectEmotionPageView(
                     noteManager: noteManager,
-                    answer: $draftNote.firstEmotion,
-                    imageName: "selectinAhtty",
-                    draftNote: draftNote
+                    comment: $draftNote.secondComment,
+                    answer: $draftNote.secondAnswer,
+                    imageName: "selectinAhtty"
                 )
-            case 3:
+            case 2:
+                // 긍정적 감정의 경우: 긍정적인 요소 확인
+                // 부정적 감정의 경우: 감정에 동반된 생각(자동적 사고) 기술
                 WritePageView(
                     noteManager: noteManager,
+                    emotion: draftNote.secondAnswer,
+                    comment: $draftNote.secondComment,
                     answer: $draftNote.thirdAnswer,
                     draftNote: draftNote,
                     imageName: "questionAhtty"
                 )
-            case 4:
-                SelectCognitiveDistortionPageView(
+            case 3:
+                // 긍정적 감정의 경우: 이를 유지하고 발전시키는 방법 탐색
+                // 부정적 감정의 경우: 이전 단계에서 기록한 생각을 객관적으로 평가
+                WritePageView(
                     noteManager: noteManager,
+                    emotion: draftNote.secondAnswer,
+                    comment: $draftNote.thirdComment,
                     answer: $draftNote.fourthAnswer,
                     draftNote: draftNote,
                     imageName: "helloAhtty"
                 )
-            case 5:
-                // 합리적 반응 도출
-                WritePageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.fifthAnswer,
-                    draftNote: draftNote,
-                    imageName: "thinkinAhtty"
-                )
-            case 6:
-                // 두 번째 감정 체크
-                SelectEmotionPageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.secondEmotion,
-                    imageName: "selectinAhtty",
-                    draftNote: draftNote
-                )
-            case 7:
+            case 4:
                 // 마지막 페이지(내일도 즐거운 하루 보내자!)
                 EndPageView(
                     noteManager: noteManager,

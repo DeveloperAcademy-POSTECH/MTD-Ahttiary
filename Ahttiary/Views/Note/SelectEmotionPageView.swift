@@ -11,11 +11,19 @@ struct SelectEmotionPageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var dateManager: DateViewModel
+    @Binding var comment: String
     @Binding var answer: String
     @FocusState var isTextFieldsFocused: Bool
     let imageName: String
     var draftNote: DraftNote
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    init(noteManager: NoteManager, comment: Binding<String>, answer: Binding<String>, imageName: String) {
+        self.noteManager = noteManager
+        _comment = comment
+        _answer = answer
+        self.imageName = imageName
+    }
     
     var body: some View {
         VStack {
@@ -46,7 +54,7 @@ struct SelectEmotionPageView: View {
             // 감정 선택 그리드
             LazyVGrid(columns: gridItemLayout) {
                 ForEach(
-                    noteManager.pageNumber == 2 ? EmotionStruct.firstEmotionArray : EmotionStruct.secondEmotionArray,
+                    EmotionStruct.firstEmotionArray,
                     id: \.self
                 ) { emotion in
                     EmotionCard(answer: $answer, emotion: emotion)

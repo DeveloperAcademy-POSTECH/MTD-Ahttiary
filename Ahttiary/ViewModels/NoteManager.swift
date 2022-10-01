@@ -10,7 +10,7 @@ import Foundation
 final class NoteManager: ObservableObject {
     
     @Published var pageNumber: Int = 0
-    let lastPageNumber: Int = 7
+    let lastPageNumber: Int = 4
     
     var randomComments: [String]
     
@@ -62,8 +62,36 @@ final class NoteManager: ObservableObject {
         pageNumber = lastPageNumber
     }
     
+    func getCurrentPageRandomComment(emotion: String) -> String {
+        let negativeEmotions = ["angry", "sad", "irritated", "scared"]
+        
+        switch pageNumber {
+        case 0:
+            return Comment.situationComment.randomElement()!
+        case 1:
+            return Comment.selectEmoticonComment
+        case 2:
+            if negativeEmotions.contains(emotion) {
+                // 부정적 감정 선택 시: 자동적 사고
+                return Comment.unconsciousnessComment.randomElement()!
+            } else {
+                // 긍정적 감정 선택 시: 긍정적 경험 서술
+                return Comment.describePositiveExperienceComment.randomElement()!
+            }
+        case 3:
+            if negativeEmotions.contains(emotion) {
+                // 부정적 감정 선택 시: 합리적 반응
+                return Comment.rationalComment.randomElement()!
+            } else {
+                // 긍정적 감정 선택 시: 긍정적 경험 발전
+                return Comment.enhancePositiveExperienceComment.randomElement()!
+            }
+        default:
+            return ""
+        }
+    }
+    
     func fetchCurrentPage() -> String {
         return "\(pageNumber + 1)"
     }
-
 }

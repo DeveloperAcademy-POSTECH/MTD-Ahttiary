@@ -11,11 +11,21 @@ struct WritePageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var dateManager: DateViewModel
+    var emotion: String
+    @Binding var comment: String
     @Binding var answer: String
     @FocusState var isTextFieldsFocused: Bool
     var draftNote: DraftNote
     
     let imageName: String
+    
+    init(noteManager: NoteManager, emotion: String, comment: Binding<String>, answer: Binding<String>, imageName: String) {
+        self.noteManager = noteManager
+        self.emotion = emotion
+        _comment = comment
+        _answer = answer
+        self.imageName = imageName
+    }
     
     var body: some View {
         VStack {
@@ -32,7 +42,7 @@ struct WritePageView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: ScreenSize.ahttyWriterWidth)
                 
-                Text(noteManager.randomComments[noteManager.pageNumber])
+                Text(comment)
                     .frame(
                         height: ScreenSize.questionMessageBoxHeight,
                         alignment: .center
@@ -78,12 +88,16 @@ struct WritePageView: View {
                         .disabled(answer.isEmpty)
                         .opacity(answer.isEmpty ? 0.7 : 1)
                 }
-                
             }
         } // End of VStack
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.Custom.background.ignoresSafeArea())
-        .onAppear { UITextView.appearance().backgroundColor = .clear }
+        .onAppear {
+            UITextView.appearance().backgroundColor = .clear
+            if comment.isEmpty {
+                comment = noteManager.getCurrentPageRandomComment(emotion: self.emotion)
+            }
+        }
     }
         
 }

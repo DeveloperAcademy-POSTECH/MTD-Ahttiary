@@ -11,13 +11,14 @@ class DraftNote: ObservableObject {
     
     var id: UUID? = nil
     @Published var dateCreated: Date = Date()
+    @Published var firstComment: String = ""
+    @Published var secondComment: String = ""
+    @Published var thirdComment: String = ""
+    @Published var fourthComment: String = ""
     @Published var firstAnswer: String = ""
     @Published var secondAnswer: String = ""
     @Published var thirdAnswer: String = ""
     @Published var fourthAnswer: String = ""
-    @Published var fifthAnswer: String = ""
-    @Published var firstEmotion: String = ""
-    @Published var secondEmotion: String = ""
     
     var displayedDate: String {
         dateCreated.convertToDisplayedDate()
@@ -26,13 +27,14 @@ class DraftNote: ObservableObject {
     init(note: Note) {
         id = note.id
         dateCreated = note.dateCreated
+        firstComment = note.firstComment
+        secondComment = note.secondComment
+        thirdComment = note.thirdComment
+        fourthComment = note.fourthComment
         firstAnswer = note.firstAnswer
         secondAnswer = note.secondAnswer
         thirdAnswer = note.thirdAnswer
         fourthAnswer = note.fourthAnswer
-        fifthAnswer = note.fifthAnswer
-        firstEmotion = note.firstEmotion
-        secondEmotion = note.secondEmotion
     }
     
     var associatedNote: Note { Note.object(withID: id!)! }

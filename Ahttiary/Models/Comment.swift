@@ -55,6 +55,16 @@ struct Comment {
         "알려줘서 고마워! 이번에는 왜곡 없이 오늘 겪었던 상황을 다시 돌아보자!"
     ]
     
+    // 긍정경험 묘사
+    static let describePositiveExperienceComment: [String] = [
+        "즐거웠다니 다행이다! 경험의 어느 부분에서 특히 기쁨을 느꼈는지 알려줄래?"
+    ]
+    
+    // 긍정경험 발전
+    static let enhancePositiveExperienceComment: [String] = [
+        "이 긍정적인 감정을 유지하고 발전시키기 위해 추가로 무엇을 해볼까?"
+    ]
+    
     // 결과
     static let resultComment: [String] = [
         "좋아! 오늘의 기록이 끝났어. 훌륭해!",
