@@ -7,33 +7,30 @@
 
 import SwiftUI
 
-struct EndPageView: View {
+struct LastPageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var mainViewModel: MainViewManager
     @EnvironmentObject var dateManager: DateViewModel
-    var draftNote: DraftNote
-    
-    let imageName: String
     
     var body: some View {
         VStack {
             CustomNavigationBar(
                 displayDate: dateManager.selectedDate,
-                draftNote: draftNote
+                draftNote: noteManager.draftNote
             )
-                .padding()
+            .padding()
             
             Spacer()
             
             // 아띠와 말풍선
             HStack(alignment: .center) {
-                Image(imageName)
+                Image(noteManager.getCurrentPageImageName())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: ScreenSize.ahttyWriterWidth)
                 
-                Text(noteManager.randomComments[noteManager.pageNumber])
+                Text(noteManager.getCurrentPageComment())
                     .frame(
                         height: ScreenSize.questionMessageBoxHeight,
                         alignment: .center
