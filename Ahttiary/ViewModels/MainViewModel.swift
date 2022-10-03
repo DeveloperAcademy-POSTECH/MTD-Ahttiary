@@ -61,16 +61,15 @@ final class MainViewModel: ObservableObject {
     }
     
     func readSelectedNote(_ createdDate: Date = Date()) -> some View {
-        var selectedNoteView: WriteNoteView? = nil
+        var selectedNoteView: ReadNoteView? = nil
         
         if currentNote != nil,
            currentNote?.dateCreated.convertToDetailedDate() == createdDate.convertToDetailedDate() {
-            selectedNoteView = WriteNoteView(note: currentNote!)
+            selectedNoteView = ReadNoteView(note: currentNote!)
         }
         
         return selectedNoteView
     }
-    
 } // MainViewManager
 
 enum PageName {
