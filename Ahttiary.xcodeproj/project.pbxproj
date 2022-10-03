@@ -50,6 +50,8 @@
 		F8622D2828AA9C5F008908CB /* WritePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2328AA9C5F008908CB /* WritePageView.swift */; };
 		F8622D2A28AAB38D008908CB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2928AAB38D008908CB /* Date.swift */; };
 		F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2B28AAB724008908CB /* ChangePageButton.swift */; };
+		F8F70C4828EAFE1800AA8B6C /* SelectEmotionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */; };
+		F8F70C4A28EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */; };
 		F8F7CCC328EAA91600E39897 /* ReadNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,8 @@
 		F8622D2328AA9C5F008908CB /* WritePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritePageView.swift; sourceTree = "<group>"; };
 		F8622D2928AAB38D008908CB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F8622D2B28AAB724008908CB /* ChangePageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePageButton.swift; sourceTree = "<group>"; };
+		F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmotionModal.swift; sourceTree = "<group>"; };
+		F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCognitiveDistortionModal.swift; sourceTree = "<group>"; };
 		F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +249,8 @@
 				F83BB7E928B60E46005F2D71 /* CognitiveDistortionCell.swift */,
 				F83BB7EB28B60F53005F2D71 /* CognitiveDistortionCard.swift */,
 				F8622D1F28AA9C5F008908CB /* SelectEmotionPageView.swift */,
+				F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */,
+				F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */,
 				F8622D2028AA9C5F008908CB /* LastPageView.swift */,
 				F8622D2128AA9C5F008908CB /* TemporaryListView.swift */,
 				F8622D2228AA9C5F008908CB /* WriteNoteView.swift */,
@@ -344,6 +350,7 @@
 				F8622D2728AA9C5F008908CB /* WriteNoteView.swift in Sources */,
 				F83BB7EC28B60F53005F2D71 /* CognitiveDistortionCard.swift in Sources */,
 				89D692E528A65EF700CD14AB /* Comment.swift in Sources */,
+				F8F70C4828EAFE1800AA8B6C /* SelectEmotionModal.swift in Sources */,
 				7AD34AAF288F932E00E92B73 /* ContentView.swift in Sources */,
 				F8622D1B28AA9C3B008908CB /* PersistentStore.swift in Sources */,
 				7AAE399328A370A4002529C1 /* Color.swift in Sources */,
@@ -363,6 +370,7 @@
 				F8622D1928AA9C3B008908CB /* Note.swift in Sources */,
 				7AD34AAD288F932E00E92B73 /* AhttiaryApp.swift in Sources */,
 				8906A86C28ADE19400C1E254 /* MainViewModel.swift in Sources */,
+				F8F70C4A28EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift in Sources */,
 				F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */,
 				7AD34AC2288F947700E92B73 /* Model.swift in Sources */,
 				7A3BA2FB289ABB9A002ABB95 /* CurrentMonthView.swift in Sources */,
