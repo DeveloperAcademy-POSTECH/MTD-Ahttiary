@@ -15,7 +15,6 @@ final class MainViewManager: ObservableObject {
     
     func goToMainView() {
         withAnimation { pageName = .main }
-//        pageName = .main
     }
     
     func goToWritingView() {
@@ -27,7 +26,7 @@ final class MainViewManager: ObservableObject {
         self.myNote = note
         withAnimation { pageName = .reading }
     }
-        
+    
     func updateNote(_ note: FetchedResults<Note>.Element?) {
         guard let note = note else { return }
         self.noteArray.append(note)
@@ -46,7 +45,7 @@ final class MainViewManager: ObservableObject {
             myNote?.dateCreated.convertToDetailedDate() == createdDate.convertToDetailedDate() {
             selectedNoteView = WriteNoteView(note: myNote!)
         }
-
+        
         return selectedNoteView
     }
     

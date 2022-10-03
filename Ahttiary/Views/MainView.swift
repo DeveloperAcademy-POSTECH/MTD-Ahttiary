@@ -11,11 +11,13 @@ struct MainView: View {
     @EnvironmentObject var mainViewModel: MainViewManager
     @EnvironmentObject var dateManager: DateViewModel
     @State var myNote: FetchedResults<Note>.Element? = nil
+    
     var buttonText: String {
         var selectedNote: FetchedResults<Note>.Element? = nil
+        
         for note in mainViewModel.noteArray {
             if note.dateCreated.convertToDetailedDate() == dateManager.selectedDate.convertToDetailedDate() {
-                    selectedNote = note
+                selectedNote = note
             }
         }
         

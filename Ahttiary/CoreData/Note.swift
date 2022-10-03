@@ -14,37 +14,67 @@ extension Note {
         get { dateCreated_ ?? Date() }
         set { dateCreated_ = newValue }
     }
-    var firstComment: String {
-        get { firstComment_ ?? "" }
-        set { firstComment_ = newValue }
+    
+    var situationComment: String {
+        get { situationComment_ ?? "" }
+        set { situationComment_ = newValue }
     }
-    var secondComment: String {
-        get { secondComment_ ?? "" }
-        set { secondComment_ = newValue }
+    var selectEmotionComment: String {
+        get { selectEmotionComment_ ?? "" }
+        set { selectEmotionComment_ = newValue }
     }
-    var thirdComment: String {
-        get { thirdComment_ ?? "" }
-        set { thirdComment_ = newValue }
+    var automaticThoughtsComment: String {
+        get { automaticThoughtsComment_ ?? "" }
+        set { automaticThoughtsComment_ = newValue }
     }
-    var fourthComment: String {
-        get { fourthComment_ ?? "" }
-        set { fourthComment_ = newValue }
+    var cognitiveDistortionComment: String {
+        get { cognitiveDistortionComment_ ?? "" }
+        set { cognitiveDistortionComment_ = newValue }
     }
-    var firstAnswer: String {
-        get { firstAnswer_ ?? "" }
-        set { firstAnswer_ = newValue }
+    var rationalizationComment: String {
+        get { rationalizationComment_ ?? "" }
+        set { rationalizationComment_ = newValue }
     }
-    var secondAnswer: String {
-        get { secondAnswer_ ?? "" }
-        set { secondAnswer_ = newValue }
+    var enhancePositiveExperienceComment: String {
+        get { enhancePositiveExperienceComment_ ?? "" }
+        set { enhancePositiveExperienceComment_ = newValue }
     }
-    var thirdAnswer: String {
-        get { thirdAnswer_ ?? "" }
-        set { thirdAnswer_ = newValue }
+    var describePositiveExperienceComment: String {
+        get { describePositiveExperienceComment_ ?? "" }
+        set { describePositiveExperienceComment_ = newValue }
     }
-    var fourthAnswer: String {
-        get { fourthAnswer_ ?? "" }
-        set { fourthAnswer_ = newValue }
+    var lastPageComment: String {
+        get { lastPageComment_ ?? "" }
+        set { lastPageComment_ = newValue }
+    }
+    
+    var situationAnswer: String {
+        get { situationAnswer_ ?? "" }
+        set { situationAnswer_ = newValue }
+    }
+    var selectEmotionAnswer: String {
+        get { selectEmotionAnswer_ ?? "" }
+        set { selectEmotionAnswer_ = newValue }
+    }
+    var automaticThoughtsAnswer: String {
+        get { automaticThoughtsAnswer_ ?? "" }
+        set { automaticThoughtsAnswer_ = newValue }
+    }
+    var cognitiveDistortionAnswer: String {
+        get { cognitiveDistortionAnswer_ ?? "" }
+        set { cognitiveDistortionAnswer_ = newValue }
+    }
+    var rationalizationAnswer: String {
+        get { rationalizationAnswer_ ?? "" }
+        set { rationalizationAnswer_ = newValue }
+    }
+    var enhancePositiveExperienceAnswer: String {
+        get { enhancePositiveExperienceAnswer_ ?? "" }
+        set { enhancePositiveExperienceAnswer_ = newValue }
+    }
+    var describePositiveExperienceAnswer: String {
+        get { describePositiveExperienceAnswer_ ?? "" }
+        set { describePositiveExperienceAnswer_ = newValue }
     }
     
     // MARK: Fetch Request 모음
@@ -73,14 +103,24 @@ extension Note {
         
         newNote.id = UUID()
         newNote.dateCreated = Date()
-        newNote.firstComment = ""
-        newNote.secondComment = ""
-        newNote.thirdComment = ""
-        newNote.fourthComment = ""
-        newNote.firstAnswer = ""
-        newNote.secondAnswer = ""
-        newNote.thirdAnswer = ""
-        newNote.fourthAnswer = ""
+        
+        newNote.situationComment = Comment.situationComment.randomElement()!
+        newNote.selectEmotionComment = Comment.selectEmotionComment.randomElement()!
+        newNote.describePositiveExperienceComment = Comment.describePositiveExperienceComment.randomElement()!
+        newNote.enhancePositiveExperienceComment = Comment.enhancePositiveExperienceComment.randomElement()!
+        newNote.automaticThoughtsComment = Comment.automaticThoughtComment.randomElement()!
+        newNote.cognitiveDistortionComment = Comment.cognitiveDistortionComment.randomElement()!
+        newNote.rationalizationComment = Comment.rationalizationComment.randomElement()!
+        newNote.lastPageComment = Comment.lastPageComment.randomElement()!
+        
+        newNote.situationAnswer = ""
+        newNote.selectEmotionAnswer = ""
+        newNote.describePositiveExperienceAnswer = ""
+        newNote.enhancePositiveExperienceAnswer = ""
+        newNote.automaticThoughtsAnswer = ""
+        newNote.cognitiveDistortionAnswer = ""
+        newNote.rationalizationAnswer = ""
+        
         
         PersistentStore.shared.saveContext()
     }
@@ -91,14 +131,23 @@ extension Note {
         
         newNote.id = UUID()
         newNote.dateCreated = createdDate
-        newNote.firstComment = ""
-        newNote.secondComment = ""
-        newNote.thirdComment = ""
-        newNote.fourthComment = ""
-        newNote.firstAnswer = ""
-        newNote.secondAnswer = ""
-        newNote.thirdAnswer = ""
-        newNote.fourthAnswer = ""
+        
+        newNote.situationComment = Comment.situationComment.randomElement()!
+        newNote.selectEmotionComment = Comment.selectEmotionComment.randomElement()!
+        newNote.describePositiveExperienceComment = Comment.describePositiveExperienceComment.randomElement()!
+        newNote.enhancePositiveExperienceComment = Comment.enhancePositiveExperienceComment.randomElement()!
+        newNote.automaticThoughtsComment = Comment.automaticThoughtComment.randomElement()!
+        newNote.cognitiveDistortionComment = Comment.cognitiveDistortionComment.randomElement()!
+        newNote.rationalizationComment = Comment.rationalizationComment.randomElement()!
+        newNote.lastPageComment = Comment.lastPageComment.randomElement()!
+        
+        newNote.situationAnswer = ""
+        newNote.selectEmotionAnswer = ""
+        newNote.describePositiveExperienceAnswer = ""
+        newNote.enhancePositiveExperienceAnswer = ""
+        newNote.automaticThoughtsAnswer = ""
+        newNote.cognitiveDistortionAnswer = ""
+        newNote.rationalizationAnswer = ""
         
         return newNote
     }
@@ -125,13 +174,22 @@ extension Note {
     
     private func updateValues(from draftNote: DraftNote) {
         dateCreated_ = draftNote.dateCreated
-        firstComment_ = draftNote.firstComment
-        secondComment_ = draftNote.secondComment
-        thirdComment_ = draftNote.thirdComment
-        fourthComment_ = draftNote.fourthComment
-        firstAnswer_ = draftNote.firstAnswer
-        secondAnswer_ = draftNote.secondAnswer
-        thirdAnswer_ = draftNote.thirdAnswer
-        fourthAnswer_ = draftNote.fourthAnswer
+        
+        situationComment_ = draftNote.situationComment
+        selectEmotionComment_ = draftNote.emotionComment
+        describePositiveExperienceComment_ = draftNote.describePositiveExperienceComment
+        enhancePositiveExperienceComment_ = draftNote.enhancePositiveExperienceComment
+        automaticThoughtsComment_ = draftNote.automaticThoughtsComment
+        cognitiveDistortionComment_ = draftNote.cognitiveDistortionComment
+        rationalizationComment_ = draftNote.rationalizationComment
+        lastPageComment_ = draftNote.lastPageComment
+        
+        situationAnswer_ = draftNote.situationAnswer
+        selectEmotionAnswer_ = draftNote.emotionAnswer
+        describePositiveExperienceAnswer_ = draftNote.describePositiveExperienceAnswer
+        enhancePositiveExperienceAnswer_ = draftNote.enhancePositiveExperienceAnswer
+        automaticThoughtsAnswer_ = draftNote.automaticThoughtsAnswer
+        cognitiveDistortionAnswer_ = draftNote.cognitiveDistortionAnswer
+        rationalizationAnswer_ = draftNote.rationalizationAnswer
     }
 }

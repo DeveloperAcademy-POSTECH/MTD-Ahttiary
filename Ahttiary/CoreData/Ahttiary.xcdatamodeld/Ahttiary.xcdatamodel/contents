@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+        <attribute name="automaticThoughtsAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="automaticThoughtsComment_" optional="YES" attributeType="String"/>
+        <attribute name="cognitiveDistortionAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="cognitiveDistortionComment_" optional="YES" attributeType="String"/>
         <attribute name="dateCreated_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="firstAnswer_" optional="YES" attributeType="String"/>
-        <attribute name="firstComment_" optional="YES" attributeType="String"/>
-        <attribute name="fourthAnswer_" optional="YES" attributeType="String"/>
-        <attribute name="fourthComment_" optional="YES" attributeType="String"/>
+        <attribute name="describePositiveExperienceAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="describePositiveExperienceComment_" optional="YES" attributeType="String"/>
+        <attribute name="enhancePositiveExperienceAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="enhancePositiveExperienceComment_" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="secondAnswer_" optional="YES" attributeType="String"/>
-        <attribute name="secondComment_" optional="YES" attributeType="String"/>
-        <attribute name="thirdAnswer_" optional="YES" attributeType="String"/>
-        <attribute name="thirdComment_" optional="YES" attributeType="String"/>
+        <attribute name="lastPageComment_" optional="YES" attributeType="String"/>
+        <attribute name="rationalizationAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="rationalizationComment_" optional="YES" attributeType="String"/>
+        <attribute name="selectEmotionAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="selectEmotionComment_" optional="YES" attributeType="String"/>
+        <attribute name="situationAnswer_" optional="YES" attributeType="String"/>
+        <attribute name="situationComment_" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Note" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="Note" positionX="-63" positionY="-18" width="128" height="284"/>
     </elements>
 </model>

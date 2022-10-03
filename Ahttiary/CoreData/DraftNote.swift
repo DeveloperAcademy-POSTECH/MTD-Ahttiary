@@ -7,18 +7,27 @@
 
 import Foundation
 
-class DraftNote: ObservableObject {
+struct DraftNote {
     
     var id: UUID? = nil
-    @Published var dateCreated: Date = Date()
-    @Published var firstComment: String = ""
-    @Published var secondComment: String = ""
-    @Published var thirdComment: String = ""
-    @Published var fourthComment: String = ""
-    @Published var firstAnswer: String = ""
-    @Published var secondAnswer: String = ""
-    @Published var thirdAnswer: String = ""
-    @Published var fourthAnswer: String = ""
+    var dateCreated: Date = Date()
+    
+    var situationComment: String
+    var emotionComment: String
+    var describePositiveExperienceComment: String
+    var enhancePositiveExperienceComment: String
+    var automaticThoughtsComment: String
+    var cognitiveDistortionComment: String
+    var rationalizationComment: String
+    var lastPageComment: String
+    
+    var situationAnswer: String
+    var emotionAnswer: String
+    var describePositiveExperienceAnswer: String
+    var enhancePositiveExperienceAnswer: String
+    var automaticThoughtsAnswer: String
+    var cognitiveDistortionAnswer: String
+    var rationalizationAnswer: String
     
     var displayedDate: String {
         dateCreated.convertToDisplayedDate()
@@ -27,14 +36,23 @@ class DraftNote: ObservableObject {
     init(note: Note) {
         id = note.id
         dateCreated = note.dateCreated
-        firstComment = note.firstComment
-        secondComment = note.secondComment
-        thirdComment = note.thirdComment
-        fourthComment = note.fourthComment
-        firstAnswer = note.firstAnswer
-        secondAnswer = note.secondAnswer
-        thirdAnswer = note.thirdAnswer
-        fourthAnswer = note.fourthAnswer
+        
+        situationComment = note.situationComment
+        emotionComment = note.selectEmotionComment
+        describePositiveExperienceComment = note.describePositiveExperienceComment
+        enhancePositiveExperienceComment = note.enhancePositiveExperienceComment
+        automaticThoughtsComment = note.automaticThoughtsComment
+        cognitiveDistortionComment = note.cognitiveDistortionComment
+        rationalizationComment = note.rationalizationComment
+        lastPageComment = note.lastPageComment
+        
+        situationAnswer = note.situationAnswer
+        emotionAnswer = note.selectEmotionAnswer
+        describePositiveExperienceAnswer = note.describePositiveExperienceAnswer
+        enhancePositiveExperienceAnswer = note.enhancePositiveExperienceAnswer
+        automaticThoughtsAnswer = note.automaticThoughtsAnswer
+        cognitiveDistortionAnswer = note.cognitiveDistortionAnswer
+        rationalizationAnswer = note.rationalizationAnswer
     }
     
     var associatedNote: Note { Note.object(withID: id!)! }

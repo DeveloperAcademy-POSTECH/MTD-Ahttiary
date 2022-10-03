@@ -11,38 +11,30 @@ struct WritePageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var dateManager: DateViewModel
-    var emotion: String
-    @Binding var comment: String
-    @Binding var answer: String
+    @State var answer: String
     @FocusState var isTextFieldsFocused: Bool
-    var draftNote: DraftNote
     
-    let imageName: String
-    
-    init(noteManager: NoteManager, emotion: String, comment: Binding<String>, answer: Binding<String>, imageName: String) {
+    init(noteManager: NoteManager) {
         self.noteManager = noteManager
-        self.emotion = emotion
-        _comment = comment
-        _answer = answer
-        self.imageName = imageName
+        self.answer = noteManager.getCurrentPageAnswer()
     }
     
     var body: some View {
         VStack {
             CustomNavigationBar(
                 displayDate: dateManager.selectedDate,
-                draftNote: draftNote
+                draftNote: noteManager.draftNote
             )
-                .padding()
+            .padding()
             
             // 아띠와 말풍선
             HStack(alignment: .center) {
-                Image(imageName)
+                Image(noteManager.getCurrentPageImageName())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: ScreenSize.ahttyWriterWidth)
                 
-                Text(comment)
+                Text(noteManager.getCurrentPageComment())
                     .frame(
                         height: ScreenSize.questionMessageBoxHeight,
                         alignment: .center
@@ -69,24 +61,33 @@ struct WritePageView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 5)
             
-                        
-            Spacer()
             
-            Text(noteManager.fetchCurrentPage() + "/7")
-                .font(.custom(Font.Custom.comment, size: 20))
+            Spacer()
             
             // 페이지 전환 버튼
             HStack(spacing: 20) {
-                if noteManager.pageNumber == 0 {
-                    ChangePageButton("다음", .long) { noteManager.goToNextPage() }
-                        .disabled(answer.isEmpty)
-                        .opacity(answer.isEmpty ? 0.7 : 1)
+                if noteManager.currentPage == .situation {
+                    ChangePageButton("다음", .long) {
+                        noteManager.updateDraftNote(answer: answer)
+                        Note.updateNote(using: noteManager.draftNote)
+                        noteManager.goToNextPage()
+                    }
+                    .disabled(answer.isEmpty)
+                    .opacity(answer.isEmpty ? 0.7 : 1)
                 } else {
-                    ChangePageButton("이전") { noteManager.goToPreviousPage() }
+                    ChangePageButton("이전") {
+                        noteManager.updateDraftNote(answer: answer)
+                        Note.updateNote(using: noteManager.draftNote)
+                        noteManager.goToPreviousPage()
+                    }
                     
-                    ChangePageButton("다음") { noteManager.goToNextPage() }
-                        .disabled(answer.isEmpty)
-                        .opacity(answer.isEmpty ? 0.7 : 1)
+                    ChangePageButton("다음") {
+                        noteManager.updateDraftNote(answer: answer)
+                        Note.updateNote(using: noteManager.draftNote)
+                        noteManager.goToNextPage()
+                    }
+                    .disabled(answer.isEmpty)
+                    .opacity(answer.isEmpty ? 0.7 : 1)
                 }
             }
         } // End of VStack
@@ -94,10 +95,6 @@ struct WritePageView: View {
         .background(Color.Custom.background.ignoresSafeArea())
         .onAppear {
             UITextView.appearance().backgroundColor = .clear
-            if comment.isEmpty {
-                comment = noteManager.getCurrentPageRandomComment(emotion: self.emotion)
-            }
         }
     }
-        
 }
