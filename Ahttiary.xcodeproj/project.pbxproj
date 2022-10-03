@@ -52,6 +52,7 @@
 		F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2B28AAB724008908CB /* ChangePageButton.swift */; };
 		F8F70C4828EAFE1800AA8B6C /* SelectEmotionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */; };
 		F8F70C4A28EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */; };
+		F8F70C4C28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4B28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift */; };
 		F8F7CCC328EAA91600E39897 /* ReadNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		F8622D2B28AAB724008908CB /* ChangePageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePageButton.swift; sourceTree = "<group>"; };
 		F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmotionModal.swift; sourceTree = "<group>"; };
 		F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCognitiveDistortionModal.swift; sourceTree = "<group>"; };
+		F8F70C4B28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNoteNavigationBar.swift; sourceTree = "<group>"; };
 		F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +216,7 @@
 				7AD34AAE288F932E00E92B73 /* ContentView.swift */,
 				7A17093B2898D4AF001E98D5 /* MainView.swift */,
 				7A3EFE1E28B6387C0061239D /* CustomNavigationBar.swift */,
+				F8F70C4B28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				7A3BA305289C037A002ABB95 /* DateGridView.swift in Sources */,
 				F8622D1728AA9C3B008908CB /* NSManagedObject.swift in Sources */,
 				F8622D1928AA9C3B008908CB /* Note.swift in Sources */,
+				F8F70C4C28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift in Sources */,
 				7AD34AAD288F932E00E92B73 /* AhttiaryApp.swift in Sources */,
 				8906A86C28ADE19400C1E254 /* MainViewModel.swift in Sources */,
 				F8F70C4A28EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift in Sources */,
