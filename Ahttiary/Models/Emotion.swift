@@ -7,6 +7,15 @@
 
 import Foundation
 
+enum Emotion: String {
+    case angry
+    case sad
+    case irritated
+    case scared
+    case satisfied
+    case happy
+}
+
 struct EmotionStruct {
     static let firstEmotionArray: [Emotion] = [
         .angry,
@@ -17,7 +26,7 @@ struct EmotionStruct {
         .happy
     ]
     
-    let emotionDictionary: [Emotion : String] = [
+    static let emotionToDescription: [Emotion : String] = [
         .angry : "화나요",
         .sad : "슬퍼요",
         .irritated : "짜증나요",
@@ -25,14 +34,13 @@ struct EmotionStruct {
         .satisfied : "만족해요",
         .happy : "행복해요"
     ]
+    
+    static let stringToDescription: [String : String] = [
+        "angry" : "화나요",
+        "sad" : "슬퍼요",
+        "irritated" : "짜증나요",
+        "scared" : "두려워요",
+        "satisfied" : "만족해요",
+        "happy" : "행복해요"
+    ]
 }
-
-enum Emotion: String {
-    case angry
-    case sad
-    case irritated
-    case scared
-    case satisfied
-    case happy
-}
-

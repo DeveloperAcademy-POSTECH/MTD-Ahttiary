@@ -99,7 +99,7 @@ struct EmotionCard: View {
                             .scaleEffect(1.2)
                             .padding(.top, 20)
                         
-                        Text(EmotionStruct().emotionDictionary[emotion]!)
+                        Text(EmotionStruct.emotionToDescription[emotion]!)
                             .foregroundColor(.black)
                             .font(.custom(Font.Custom.calendarBold, size: 17))
                             .padding(.top, 5)
