@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectEmotionPageView: View {
     
     @ObservedObject var noteManager: NoteManager
-    @EnvironmentObject var dateManager: DateViewModel
+    @EnvironmentObject var dateManager: DateManager
     @State var answer: String
     @FocusState var isTextFieldsFocused: Bool
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]

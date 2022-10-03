@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DateViewModel: ObservableObject {
+final class DateManager: ObservableObject {
     @Published var date: Date = Date()
     @Published var selectedDate: Date = Date()
     

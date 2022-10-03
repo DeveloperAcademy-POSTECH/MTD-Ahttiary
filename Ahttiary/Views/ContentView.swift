@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var mainViewManager: MainViewManager
-    @EnvironmentObject var dateManager: DateViewModel
+    @EnvironmentObject var mainViewManager: MainViewModel
+    @EnvironmentObject var dateManager: DateManager
     @FetchRequest(fetchRequest: Note.allNotesFR())
     private var notes: FetchedResults<Note>
     
