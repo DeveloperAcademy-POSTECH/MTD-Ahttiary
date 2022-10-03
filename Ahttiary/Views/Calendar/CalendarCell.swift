@@ -43,8 +43,11 @@ struct CalendarCell: View {
                     )
                     .onTapGesture {
                         withAnimation { dateManager.updateSelectedDate(dayOfThisCell) }
+                        
                         if detectNoteData() { linkNoteCoreData() }
                         else { mainViewModel.updateNote(nil)}
+                        
+                        mainViewModel.changeCurrentNote(with: dateManager.selectedDate.convertToDetailedDate())
                     }
                     .onAppear {
                         if dateManager.verifySelectedDay(dayOfThisCell) {
