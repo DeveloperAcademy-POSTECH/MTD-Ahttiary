@@ -11,10 +11,22 @@ struct SelectEmotionModal: View {
     
     @Binding var answer: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                
+                Image(systemName: "xmark")
+                    .foregroundColor(Color.Custom.carrotGreen)
+                    .font(.custom(Font.Custom.calendarBold, size: 18))
+                    .onTapGesture {
+                        presentation.wrappedValue.dismiss()
+                    }
+            }
+            .padding(.vertical)
+            
             // 감정 선택 그리드
             LazyVGrid(columns: gridItemLayout) {
                 ForEach(

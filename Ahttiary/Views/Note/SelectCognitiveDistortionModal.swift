@@ -13,10 +13,23 @@ struct SelectCognitiveDistortionModal: View {
     
     @Binding var answer: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         ZStack {
             VStack {
+                HStack {
+                    Spacer()
+                    
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color.Custom.carrotGreen)
+                        .font(.custom(Font.Custom.calendarBold, size: 18))
+                        .onTapGesture {
+                            presentation.wrappedValue.dismiss()
+                        }
+                }
+                .padding(.vertical)
+                
                 // Emotion Selecting Buttons
                 ScrollView (showsIndicators: false) {
                     LazyVGrid(columns: gridItemLayout) {
@@ -29,10 +42,10 @@ struct SelectCognitiveDistortionModal: View {
                         } // ForEach
                     } // LazyVGrid
                 } // ScrollView
-                .padding(.horizontal)
                 
                 Spacer()
             }
+            .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.Custom.background.ignoresSafeArea())
             
