@@ -12,6 +12,8 @@ struct ReadNoteView: View {
     @EnvironmentObject var dateManager: DateManager
     @State var answer: String = ""
     @FocusState var isTextFieldsFocused: Bool
+    @State private var isShowingSelectEmotionModal = false
+    @State private var isShowingSelectCognitiveDistortionModal = false
     
     init(note: Note) {
         _noteManager = ObservedObject(wrappedValue: NoteManager(note: note))
@@ -31,6 +33,12 @@ struct ReadNoteView: View {
                 
                 // 감정 선택
                 ShortCard(type: .emotion, content: noteManager.draftNote.emotionAnswer)
+                    .onTapGesture {
+                        isShowingSelectEmotionModal = true
+                    }
+                    .sheet(isPresented: $isShowingSelectEmotionModal) {
+                        SelectEmotionModal(answer: $noteManager.draftNote.emotionAnswer)
+                    }
                 
                 if noteManager.isEmotionPositive() {
                     // MARK: 긍정적 감정을 고른 경우
@@ -46,6 +54,12 @@ struct ReadNoteView: View {
                     
                     // 인지 왜곡
                     ShortCard(type: .cognitiveDistortion, content: noteManager.draftNote.cognitiveDistortionAnswer)
+                        .onTapGesture {
+                            isShowingSelectCognitiveDistortionModal = true
+                        }
+                        .sheet(isPresented: $isShowingSelectCognitiveDistortionModal) {
+                            SelectCognitiveDistortionModal(answer: $noteManager.draftNote.cognitiveDistortionAnswer)
+                        }
                     
                     // 합리적 반응
                     LongCard(title: "합리적 반응", content: $noteManager.draftNote.rationalizationAnswer, isTextFieldsFocused: _isTextFieldsFocused)
@@ -68,18 +82,23 @@ struct LongCard: View {
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "circle")
+                Image("normalAhtty")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
                 
                 Text("\(title)")
+                    .font(.custom(Font.Custom.calendarBold, size: 17))
                 
                 Spacer()
             }
+            .padding(.horizontal)
             
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(Color.Custom.ahttyWhite)
                 .overlay {
                     TextEditor(text: $content)
-                        .frame(height: 50)
+                        .frame(height: 150)
                         .font(.custom(Font.Custom.comment, size: 20))
                         .focused($isTextFieldsFocused)
                         .background(Color.Custom.ahttyWhite)
@@ -87,6 +106,7 @@ struct LongCard: View {
                         .padding()
                         .textSelection(.disabled)
                 }
+                .frame(height: 150)
                 .padding(.horizontal)
                 .padding(.vertical, 5)
         }
@@ -99,7 +119,18 @@ struct ShortCard: View {
     
     var body: some View {
         VStack {
-            Text("\(type.rawValue)")
+            HStack {
+                Image("normalAhtty")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
+                
+                Text("\(type.rawValue)")
+                    .font(.custom(Font.Custom.calendarBold, size: 17))
+                
+                Spacer()
+            }
+            .padding(.horizontal)
             
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(Color.Custom.ahttyWhite)
@@ -108,7 +139,6 @@ struct ShortCard: View {
                         Image(content)
                             .resizable()
                             .scaledToFit()
-                            .scaleEffect(1.2)
                             .padding(.top, 20)
                         
                         Text(type == .emotion ? EmotionStruct.convertStringToDescription(content) : CognitiveDistortion.convertStringToDescription(content))
@@ -118,6 +148,7 @@ struct ShortCard: View {
                             .padding(.bottom, 10)
                     }
                 }
+                .frame(width: 150, height: 150)
                 .padding(.horizontal)
                 .padding(.vertical, 5)
         }
