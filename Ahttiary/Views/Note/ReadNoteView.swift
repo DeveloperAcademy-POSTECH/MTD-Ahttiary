@@ -111,7 +111,7 @@ struct ShortCard: View {
                             .scaleEffect(1.2)
                             .padding(.top, 20)
                         
-                        Text(EmotionStruct.stringToDescription[content]!)
+                        Text(type == .emotion ? EmotionStruct.convertStringToDescription(content) : CognitiveDistortion.convertStringToDescription(content))
                             .foregroundColor(.black)
                             .font(.custom(Font.Custom.calendarBold, size: 17))
                             .padding(.top, 5)
