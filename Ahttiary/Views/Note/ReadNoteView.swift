@@ -21,7 +21,7 @@ struct ReadNoteView: View {
     
     var body: some View {
         VStack {
-            CustomNavigationBar(
+            ReadNoteNavigationBar(
                 displayDate: dateManager.selectedDate,
                 draftNote: noteManager.draftNote
             )
@@ -148,7 +148,7 @@ struct ShortCard: View {
                             .padding(.bottom, 10)
                     }
                 }
-                .frame(width: 150, height: 150)
+                .frame(width: 120, height: 120)
                 .padding(.horizontal)
                 .padding(.vertical, 5)
         }
