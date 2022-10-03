@@ -17,11 +17,12 @@ struct WriteNoteView: View {
     var body: some View {
         Group {
             switch noteManager.currentPage {
-            case .situation:
                 // 상황 기록
+            case .situation:
                 WritePageView(noteManager: noteManager)
-            case .selectEmotion:
+                
                 // 감정 선택
+            case .selectEmotion:
                 SelectEmotionPageView(noteManager: noteManager)
                 
                 // 긍정적 감정
