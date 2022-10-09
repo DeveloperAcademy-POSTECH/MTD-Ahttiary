@@ -10,10 +10,8 @@ import SwiftUI
 struct ReadNoteView: View {
     @ObservedObject var noteManager: NoteManager
     @EnvironmentObject var dateManager: DateManager
-    @State var answer: String = ""
+    @ObservedObject var readNoteViewModel: ReadNoteViewModel = ReadNoteViewModel()
     @FocusState var isTextFieldsFocused: Bool
-    @State private var isShowingSelectEmotionModal = false
-    @State private var isShowingSelectCognitiveDistortionModal = false
     
     init(note: Note) {
         _noteManager = ObservedObject(wrappedValue: NoteManager(note: note))
@@ -23,46 +21,51 @@ struct ReadNoteView: View {
         VStack {
             ReadNoteNavigationBar(
                 displayDate: dateManager.selectedDate,
-                draftNote: noteManager.draftNote
+                draftNote: noteManager.draftNote,
+                isEditing: $readNoteViewModel.isEditing
             )
             .padding()
             
             ScrollView {
                 // 상황 기술
-                LongCard(title: "상황 기술", content: $noteManager.draftNote.situationAnswer, isTextFieldsFocused: _isTextFieldsFocused)
+                LongCard(title: "상황 기술", content: $noteManager.draftNote.situationAnswer, isTextFieldsFocused: _isTextFieldsFocused, isEditing: readNoteViewModel.isEditing)
                 
                 // 감정 선택
                 ShortCard(type: .emotion, content: noteManager.draftNote.emotionAnswer)
                     .onTapGesture {
-                        isShowingSelectEmotionModal = true
+                        if readNoteViewModel.isEditing {
+                            readNoteViewModel.isShowingSelectEmotionModal = true
+                        }
                     }
-                    .sheet(isPresented: $isShowingSelectEmotionModal) {
+                    .sheet(isPresented: $readNoteViewModel.isShowingSelectEmotionModal) {
                         SelectEmotionModal(answer: $noteManager.draftNote.emotionAnswer)
                     }
                 
                 if noteManager.isEmotionPositive() {
                     // MARK: 긍정적 감정을 고른 경우
                     // 경험 서술
-                    LongCard(title: "경험 서술", content: $noteManager.draftNote.describePositiveExperienceAnswer, isTextFieldsFocused: _isTextFieldsFocused)
+                    LongCard(title: "경험 서술", content: $noteManager.draftNote.describePositiveExperienceAnswer, isTextFieldsFocused: _isTextFieldsFocused, isEditing: readNoteViewModel.isEditing)
                     
                     // 경험 강화
-                    LongCard(title: "경험 강화", content: $noteManager.draftNote.enhancePositiveExperienceAnswer, isTextFieldsFocused: _isTextFieldsFocused)
+                    LongCard(title: "경험 강화", content: $noteManager.draftNote.enhancePositiveExperienceAnswer, isTextFieldsFocused: _isTextFieldsFocused, isEditing: readNoteViewModel.isEditing)
                 } else {
                     // MARK: 부정적 감정을 고른 경우
                     // 자동적 사고
-                    LongCard(title: "자동적 사고", content: $noteManager.draftNote.automaticThoughtsAnswer, isTextFieldsFocused: _isTextFieldsFocused)
+                    LongCard(title: "자동적 사고", content: $noteManager.draftNote.automaticThoughtsAnswer, isTextFieldsFocused: _isTextFieldsFocused, isEditing: readNoteViewModel.isEditing)
                     
                     // 인지 왜곡
                     ShortCard(type: .cognitiveDistortion, content: noteManager.draftNote.cognitiveDistortionAnswer)
                         .onTapGesture {
-                            isShowingSelectCognitiveDistortionModal = true
+                            if readNoteViewModel.isEditing {
+                                readNoteViewModel.isShowingSelectCognitiveDistortionModal = true
+                            }
                         }
-                        .sheet(isPresented: $isShowingSelectCognitiveDistortionModal) {
+                        .sheet(isPresented: $readNoteViewModel.isShowingSelectCognitiveDistortionModal) {
                             SelectCognitiveDistortionModal(answer: $noteManager.draftNote.cognitiveDistortionAnswer)
                         }
                     
                     // 합리적 반응
-                    LongCard(title: "합리적 반응", content: $noteManager.draftNote.rationalizationAnswer, isTextFieldsFocused: _isTextFieldsFocused)
+                    LongCard(title: "합리적 반응", content: $noteManager.draftNote.rationalizationAnswer, isTextFieldsFocused: _isTextFieldsFocused, isEditing: readNoteViewModel.isEditing)
                 }
             }
         } // VStack
@@ -81,6 +84,7 @@ struct LongCard: View {
     var title: String
     @Binding var content: String
     @FocusState var isTextFieldsFocused: Bool
+    var isEditing: Bool
     
     var body: some View {
         VStack {
@@ -108,6 +112,7 @@ struct LongCard: View {
                         .accentColor(Color.Custom.carrotGreen)
                         .padding()
                         .textSelection(.disabled)
+                        .disabled(!isEditing)
                 }
                 .frame(height: 150)
                 .padding(.horizontal)
@@ -161,4 +166,10 @@ struct ShortCard: View {
         case emotion = "감정"
         case cognitiveDistortion = "인지 왜곡"
     }
+}
+
+final class ReadNoteViewModel: ObservableObject {
+    @Published var isShowingSelectEmotionModal = false
+    @Published var isShowingSelectCognitiveDistortionModal = false
+    @Published var isEditing = false
 }

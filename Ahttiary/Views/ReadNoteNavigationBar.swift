@@ -11,6 +11,8 @@ struct ReadNoteNavigationBar: View {
     @EnvironmentObject var mainViewModel: MainViewModel
     let displayDate: Date
     let draftNote: DraftNote
+    @Binding var isEditing: Bool
+    @State var editingText: String = "수정하기"
     
     var body: some View {
         ZStack {
@@ -39,9 +41,18 @@ struct ReadNoteNavigationBar: View {
             HStack {
                 Spacer()
                 
-                Text("수정하기")
+                Text(editingText)
                     .foregroundColor(Color.Custom.carrotGreen)
                     .font(.custom(Font.Custom.calendarBold, size: 18))
+                    .onTapGesture {
+                        if isEditing {
+                            editingText = "수정완료"
+                            isEditing = false
+                        } else {
+                            editingText = "수정하기"
+                            isEditing = true
+                        }
+                    }
             }
         } // ZStack
     } // body
