@@ -71,6 +71,9 @@ struct ReadNoteView: View {
         .onAppear {
             UITextView.appearance().backgroundColor = .clear
         }
+        .onDisappear {
+            Note.updateNote(using: noteManager.draftNote)
+        }
     } // body
 } // ReadNoteView
 

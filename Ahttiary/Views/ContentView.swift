@@ -27,7 +27,6 @@ struct ContentView: View {
             mainViewManager.readSelectedNote(dateManager.selectedDate)
         }
     }
-    
 }// ContentView
 
 struct ContentView_Previews: PreviewProvider {

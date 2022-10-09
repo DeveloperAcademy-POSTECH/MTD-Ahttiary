@@ -48,7 +48,7 @@ struct WriteNoteView: View {
             }
         }
         .background(Color.Custom.background)
-        .onChange(of: noteManager.currentPage) { _ in
+        .onDisappear {
             Note.updateNote(using: noteManager.draftNote)
         }
     } // End of body

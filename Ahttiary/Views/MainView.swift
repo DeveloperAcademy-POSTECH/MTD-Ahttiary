@@ -15,7 +15,7 @@ struct MainView: View {
         VStack {
             CalendarView()
             
-            HStack (alignment: .center) {
+            HStack(alignment: .center) {
                 Image("helloAhtty")
                     .resizable()
                     .frame(width: 150, height: 150)
