@@ -8,34 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var mainViewModel: MainViewManager
-    @EnvironmentObject var dateManager: DateViewModel
-    @State var myNote: FetchedResults<Note>.Element? = nil
-    
-    var buttonText: String {
-        var selectedNote: FetchedResults<Note>.Element? = nil
-        
-        for note in mainViewModel.noteArray {
-            if note.dateCreated.convertToDetailedDate() == dateManager.selectedDate.convertToDetailedDate() {
-                selectedNote = note
-            }
-        }
-        
-        if selectedNote != nil {
-            updateToReadNote(selectedNote!)
-            return "감정 기록 읽기"
-        }
-        else {
-            updateToReadNote(nil)
-            return "감정 기록 쓰기"
-        }
-    }
+    @EnvironmentObject var mainViewModel: MainViewModel
+    @EnvironmentObject var dateManager: DateManager
     
     var body: some View {
         VStack {
             CalendarView()
             
-            HStack (alignment: .center) {
+            HStack(alignment: .center) {
                 Image("helloAhtty")
                     .resizable()
                     .frame(width: 150, height: 150)
@@ -49,14 +29,13 @@ struct MainView: View {
             .padding(.bottom, 60)
             
             Button {
-                if myNote == nil { mainViewModel.goToWritingView() }
-                else { mainViewModel.goToReadingView(myNote) }
+                mainViewModel.changeCurrentPage()
             } label: {
                 ZStack (alignment: .center) {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.Custom.carrotGreen)
                     
-                    Text(buttonText)
+                    Text(mainViewModel.buttonText)
                         .font(.custom(Font.Custom.calendarBold, size: 20))
                         .foregroundColor(.white)
                 }
@@ -64,16 +43,10 @@ struct MainView: View {
             }
             .padding(.horizontal, 70)
             .padding(.bottom, 58)
-            
         }// VStack
         .padding(.horizontal, 20)
         .background(Color.Custom.background)
     }// body
-    
-    private func updateToReadNote(_ note: FetchedResults<Note>.Element?) {
-        DispatchQueue.main.async { self.myNote = note }
-    }
-    
 }// MainView
 
 struct MainView_Previews: PreviewProvider {

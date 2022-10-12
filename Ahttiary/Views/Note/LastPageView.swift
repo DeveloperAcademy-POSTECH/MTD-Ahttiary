@@ -10,8 +10,8 @@ import SwiftUI
 struct LastPageView: View {
     
     @ObservedObject var noteManager: NoteManager
-    @EnvironmentObject var mainViewModel: MainViewManager
-    @EnvironmentObject var dateManager: DateViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
+    @EnvironmentObject var dateManager: DateManager
     
     var body: some View {
         VStack {

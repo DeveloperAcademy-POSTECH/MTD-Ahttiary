@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct CalendarCell: View {
-    @EnvironmentObject var dateManager: DateViewModel
-    @EnvironmentObject var mainViewManager: MainViewManager
+    @EnvironmentObject var dateManager: DateManager
+    @EnvironmentObject var mainViewModel: MainViewModel
     @FetchRequest(fetchRequest: Note.allNotesFR())
     var notes: FetchedResults<Note>
     let count: Int
@@ -43,8 +43,11 @@ struct CalendarCell: View {
                     )
                     .onTapGesture {
                         withAnimation { dateManager.updateSelectedDate(dayOfThisCell) }
+                        
                         if detectNoteData() { linkNoteCoreData() }
-                        else { mainViewManager.updateNote(nil)}
+                        else { mainViewModel.updateNote(nil)}
+                        
+                        mainViewModel.changeCurrentNote(with: dateManager.selectedDate.convertToDetailedDate())
                     }
                     .onAppear {
                         if dateManager.verifySelectedDay(dayOfThisCell) {
@@ -95,7 +98,7 @@ struct CalendarCell: View {
     }
     
     private func linkNoteCoreData() {
-        for note in notes { mainViewManager.updateNote(note) }
+        for note in notes { mainViewModel.updateNote(note) }
     }
     
 }// CalendarCell

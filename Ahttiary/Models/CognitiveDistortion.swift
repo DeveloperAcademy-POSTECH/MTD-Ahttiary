@@ -24,14 +24,14 @@ struct CognitiveDistortion {
         case .polarizedThinking:
             return [
                 "name": "흑백논리",
-                "image": "dichotomousThinking",
+                "image": "polarizedThinking",
                 "description": "모든 일을 한두 개의 범주로만 받아들이며, 중간 지대는 인정하지 않는 것.",
                 "example": "완벽하지 않으면 가치가 없어"
             ]
         case .overgeneralization:
             return [
                 "name": "성급한 일반화",
-                "image": "overGeneralization",
+                "image": "overgeneralization",
                 "description": "사건을 확대해석하여 섣부른 결론을 내리는 것.",
                 "example": "면접에서 떨어졌어. 나는 앞으로도 절대 직업을 구할 수 없을거야."
             ]
@@ -59,7 +59,7 @@ struct CognitiveDistortion {
         case .shouldStatements:
             return [
                 "name": "완벽주의자",
-                "image": "perfectionism",
+                "image": "shouldStatements",
                 "description": "스스로에게 비현실적인 기대를 하거나 무거운 압박을 부여하는 것.",
                 "example": "하나도 긴장하지 않고 이 발표를 마쳐야만 해."
             ]
@@ -73,10 +73,44 @@ struct CognitiveDistortion {
         case .labeling:
             return [
                 "name": "낙인",
-                "image": "mislabelling",
+                "image": "labeling",
                 "description": "자신이나 타인에게 강한 고정관념을 가지고, 그에 반하는 정보는 차단하는 것.",
                 "example": "이번 대회에서 A가 활약했다고? 꼼수를 쓴게 분명해."
             ]
+        }
+    }
+    
+    static let stringToDescription: [String: String] = [
+        "polarizedThinking": "흑백논리",
+        "overgeneralization": "성급한 일반화",
+        "personalization": "내 탓이야",
+        "mindReading": "마인드 리딩",
+        "mentalFiltering": "부정 확성기",
+        "shouldStatements": "완벽주의자",
+        "emotionalReasoning": "기분따라",
+        "labeling": "낙인"
+    ]
+    
+    static func convertStringToDescription(_ string: String) -> String {
+        switch string {
+        case "polarizedThinking":
+            return "흑백논리"
+        case "overgeneralization":
+            return "성급한 일반화"
+        case "personalization":
+            return "내 탓이야"
+        case "mindReading":
+            return "마인드 리딩"
+        case "mentalFiltering":
+            return "부정 확성기"
+        case "shouldStatements":
+            return "완벽주의자"
+        case "emotionalReasoning":
+            return "기분따라"
+        case "labeling":
+            return "낙인"
+        default:
+            return "낙인"
         }
     }
 }

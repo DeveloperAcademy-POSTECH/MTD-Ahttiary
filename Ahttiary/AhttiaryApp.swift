@@ -11,8 +11,8 @@ import SwiftUI
 struct AhttiaryApp: App {
     
     @StateObject var persistentStore = PersistentStore.shared
-    @StateObject var dateViewModel: DateViewModel = DateViewModel()
-    @StateObject var mainViewManager: MainViewManager = MainViewManager()
+    @StateObject var dateViewModel: DateManager = DateManager()
+    @StateObject var mainViewManager: MainViewModel = MainViewModel()
     
     var body: some Scene {
         WindowGroup {

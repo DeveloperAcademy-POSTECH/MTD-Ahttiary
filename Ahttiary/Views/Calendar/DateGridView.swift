@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateGridView: View {
-    @EnvironmentObject var dateManager: DateViewModel
+    @EnvironmentObject var dateManager: DateManager
     @State private var locationOfGrid: CGFloat = 0
     
     var body: some View {

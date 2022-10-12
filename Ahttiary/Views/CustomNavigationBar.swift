@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomNavigationBar: View {
-    @EnvironmentObject var mainViewModel: MainViewManager
+    @EnvironmentObject var mainViewModel: MainViewModel
     @State var isPresented: Bool = false
     let displayDate: Date
     let draftNote: DraftNote

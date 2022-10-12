@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A1709352898D309001E98D5 /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1709342898D309001E98D5 /* DateViewModel.swift */; };
+		7A1709352898D309001E98D5 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1709342898D309001E98D5 /* DateManager.swift */; };
 		7A17093A2898D466001E98D5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1709392898D466001E98D5 /* CalendarView.swift */; };
 		7A17093C2898D4AF001E98D5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A17093B2898D4AF001E98D5 /* MainView.swift */; };
 		7A3BA2FB289ABB9A002ABB95 /* CurrentMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BA2FA289ABB9A002ABB95 /* CurrentMonthView.swift */; };
@@ -24,7 +24,7 @@
 		7AD34AB1288F933000E92B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD34AB0288F933000E92B73 /* Assets.xcassets */; };
 		7AD34AB4288F933000E92B73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD34AB3288F933000E92B73 /* Preview Assets.xcassets */; };
 		7AD34AC2288F947700E92B73 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD34AC1288F947700E92B73 /* Model.swift */; };
-		8906A86C28ADE19400C1E254 /* MainViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906A86B28ADE19400C1E254 /* MainViewManager.swift */; };
+		8906A86C28ADE19400C1E254 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906A86B28ADE19400C1E254 /* MainViewModel.swift */; };
 		8981172A28A664B200BAB3E2 /* AhttyComment.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8981172928A664B200BAB3E2 /* AhttyComment.ttf */; };
 		8981172C28A6663200BAB3E2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8981172B28A6663200BAB3E2 /* Font.swift */; };
 		8981172E28A6672000BAB3E2 /* GangwonEduAllBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8981172D28A6672000BAB3E2 /* GangwonEduAllBold.otf */; };
@@ -50,10 +50,14 @@
 		F8622D2828AA9C5F008908CB /* WritePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2328AA9C5F008908CB /* WritePageView.swift */; };
 		F8622D2A28AAB38D008908CB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2928AAB38D008908CB /* Date.swift */; };
 		F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8622D2B28AAB724008908CB /* ChangePageButton.swift */; };
+		F8F70C4828EAFE1800AA8B6C /* SelectEmotionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */; };
+		F8F70C4A28EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */; };
+		F8F70C4C28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F70C4B28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift */; };
+		F8F7CCC328EAA91600E39897 /* ReadNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A1709342898D309001E98D5 /* DateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
+		7A1709342898D309001E98D5 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		7A1709392898D466001E98D5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		7A17093B2898D4AF001E98D5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7A3BA2FA289ABB9A002ABB95 /* CurrentMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMonthView.swift; sourceTree = "<group>"; };
@@ -71,7 +75,7 @@
 		7AD34AB0288F933000E92B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AD34AB3288F933000E92B73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7AD34AC1288F947700E92B73 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		8906A86B28ADE19400C1E254 /* MainViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewManager.swift; sourceTree = "<group>"; };
+		8906A86B28ADE19400C1E254 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		891E063C28BCAB25005E785D /* 아띠어리.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "아띠어리.entitlements"; sourceTree = "<group>"; };
 		8981172928A664B200BAB3E2 /* AhttyComment.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AhttyComment.ttf; sourceTree = "<group>"; };
 		8981172B28A6663200BAB3E2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -99,6 +103,10 @@
 		F8622D2328AA9C5F008908CB /* WritePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritePageView.swift; sourceTree = "<group>"; };
 		F8622D2928AAB38D008908CB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F8622D2B28AAB724008908CB /* ChangePageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePageButton.swift; sourceTree = "<group>"; };
+		F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmotionModal.swift; sourceTree = "<group>"; };
+		F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCognitiveDistortionModal.swift; sourceTree = "<group>"; };
+		F8F70C4B28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNoteNavigationBar.swift; sourceTree = "<group>"; };
+		F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,10 +187,10 @@
 		7AD34ABE288F945000E92B73 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7A1709342898D309001E98D5 /* DateViewModel.swift */,
+				7A1709342898D309001E98D5 /* DateManager.swift */,
 				7A3BA309289C0B9B002ABB95 /* CalendarViewModel.swift */,
 				F8622D1C28AA9C4D008908CB /* NoteManager.swift */,
-				8906A86B28ADE19400C1E254 /* MainViewManager.swift */,
+				8906A86B28ADE19400C1E254 /* MainViewModel.swift */,
 				F83BB7ED28B63EF9005F2D71 /* DistortionPageManager.swift */,
 			);
 			path = ViewModels;
@@ -208,6 +216,7 @@
 				7AD34AAE288F932E00E92B73 /* ContentView.swift */,
 				7A17093B2898D4AF001E98D5 /* MainView.swift */,
 				7A3EFE1E28B6387C0061239D /* CustomNavigationBar.swift */,
+				F8F70C4B28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,11 +252,14 @@
 				F83BB7E928B60E46005F2D71 /* CognitiveDistortionCell.swift */,
 				F83BB7EB28B60F53005F2D71 /* CognitiveDistortionCard.swift */,
 				F8622D1F28AA9C5F008908CB /* SelectEmotionPageView.swift */,
+				F8F70C4728EAFE1800AA8B6C /* SelectEmotionModal.swift */,
+				F8F70C4928EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift */,
 				F8622D2028AA9C5F008908CB /* LastPageView.swift */,
 				F8622D2128AA9C5F008908CB /* TemporaryListView.swift */,
 				F8622D2228AA9C5F008908CB /* WriteNoteView.swift */,
 				F8622D2328AA9C5F008908CB /* WritePageView.swift */,
 				F8622D2B28AAB724008908CB /* ChangePageButton.swift */,
+				F8F7CCC228EAA91600E39897 /* ReadNoteView.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -326,7 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A1709352898D309001E98D5 /* DateViewModel.swift in Sources */,
+				7A1709352898D309001E98D5 /* DateManager.swift in Sources */,
 				F83BB7EA28B60E46005F2D71 /* CognitiveDistortionCell.swift in Sources */,
 				F8622D2628AA9C5F008908CB /* TemporaryListView.swift in Sources */,
 				F83BB7E228B4F1DB005F2D71 /* Emotion.swift in Sources */,
@@ -341,6 +353,7 @@
 				F8622D2728AA9C5F008908CB /* WriteNoteView.swift in Sources */,
 				F83BB7EC28B60F53005F2D71 /* CognitiveDistortionCard.swift in Sources */,
 				89D692E528A65EF700CD14AB /* Comment.swift in Sources */,
+				F8F70C4828EAFE1800AA8B6C /* SelectEmotionModal.swift in Sources */,
 				7AD34AAF288F932E00E92B73 /* ContentView.swift in Sources */,
 				F8622D1B28AA9C3B008908CB /* PersistentStore.swift in Sources */,
 				7AAE399328A370A4002529C1 /* Color.swift in Sources */,
@@ -354,11 +367,14 @@
 				7A3EFE1F28B6387C0061239D /* CustomNavigationBar.swift in Sources */,
 				7A3BA30C289C0EF2002ABB95 /* CalendarCell.swift in Sources */,
 				F8622D1A28AA9C3B008908CB /* Ahttiary.xcdatamodeld in Sources */,
+				F8F7CCC328EAA91600E39897 /* ReadNoteView.swift in Sources */,
 				7A3BA305289C037A002ABB95 /* DateGridView.swift in Sources */,
 				F8622D1728AA9C3B008908CB /* NSManagedObject.swift in Sources */,
 				F8622D1928AA9C3B008908CB /* Note.swift in Sources */,
+				F8F70C4C28EB0D2A00AA8B6C /* ReadNoteNavigationBar.swift in Sources */,
 				7AD34AAD288F932E00E92B73 /* AhttiaryApp.swift in Sources */,
-				8906A86C28ADE19400C1E254 /* MainViewManager.swift in Sources */,
+				8906A86C28ADE19400C1E254 /* MainViewModel.swift in Sources */,
+				F8F70C4A28EAFE2A00AA8B6C /* SelectCognitiveDistortionModal.swift in Sources */,
 				F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */,
 				7AD34AC2288F947700E92B73 /* Model.swift in Sources */,
 				7A3BA2FB289ABB9A002ABB95 /* CurrentMonthView.swift in Sources */,

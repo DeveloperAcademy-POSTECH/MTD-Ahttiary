@@ -11,7 +11,7 @@ struct SelectCognitiveDistortionPageView: View {
     
     @ObservedObject var noteManager: NoteManager
     @ObservedObject var distortionPageManager: DistortionPageManager = DistortionPageManager()
-    @EnvironmentObject var dateManager: DateViewModel
+    @EnvironmentObject var dateManager: DateManager
     
     @State var answer: String
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]

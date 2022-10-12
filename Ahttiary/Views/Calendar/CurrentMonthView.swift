@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CurrentMonthView: View {
-    @EnvironmentObject var dateManager: DateViewModel
+    @EnvironmentObject var dateManager: DateManager
     var currentYearAndMonth: String {
         let components = Calendar.current.dateComponents([.year, .month], from: dateManager.date)
         let year = components.year
