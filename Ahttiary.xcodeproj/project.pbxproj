@@ -30,6 +30,8 @@
 		8981172E28A6672000BAB3E2 /* GangwonEduAllBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8981172D28A6672000BAB3E2 /* GangwonEduAllBold.otf */; };
 		8981173028A6682B00BAB3E2 /* GangwonEduAllLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8981172F28A6682B00BAB3E2 /* GangwonEduAllLight.otf */; };
 		89D692E528A65EF700CD14AB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D692E428A65EF700CD14AB /* Comment.swift */; };
+		D164666328EDEAAA008E3261 /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D164666228EDEAAA008E3261 /* OnboardingTabView.swift */; };
+		D164666628EDECFD008E3261 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D164666528EDECFD008E3261 /* OnboardingPageView.swift */; };
 		F83BB7E228B4F1DB005F2D71 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB7E128B4F1DB005F2D71 /* Emotion.swift */; };
 		F83BB7E628B60A9C005F2D71 /* SelectCognitiveDistortionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB7E528B60A9C005F2D71 /* SelectCognitiveDistortionPageView.swift */; };
 		F83BB7E828B60B20005F2D71 /* CognitiveDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB7E728B60B20005F2D71 /* CognitiveDistortion.swift */; };
@@ -79,6 +81,8 @@
 		8981172F28A6682B00BAB3E2 /* GangwonEduAllLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GangwonEduAllLight.otf; sourceTree = "<group>"; };
 		89CE3B6E28A6621000B3BE42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		89D692E428A65EF700CD14AB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		D164666228EDEAAA008E3261 /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
+		D164666528EDECFD008E3261 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		F83BB7E128B4F1DB005F2D71 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		F83BB7E528B60A9C005F2D71 /* SelectCognitiveDistortionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCognitiveDistortionPageView.swift; sourceTree = "<group>"; };
 		F83BB7E728B60B20005F2D71 /* CognitiveDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitiveDistortion.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 		7AD34AC0288F945D00E92B73 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D164666128EDEA94008E3261 /* Onboarding */,
 				7A3BA2F9289ABADF002ABB95 /* Calendar */,
 				F8622D1E28AA9C56008908CB /* Note */,
 				7AD34AAE288F932E00E92B73 /* ContentView.swift */,
@@ -222,6 +227,15 @@
 				7A3EFE2028B651780061239D /* Poppins-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D164666128EDEA94008E3261 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D164666228EDEAAA008E3261 /* OnboardingTabView.swift */,
+				D164666528EDECFD008E3261 /* OnboardingPageView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		F8622D1028AA9C0E008908CB /* CoreData */ = {
@@ -335,6 +349,7 @@
 				F8622D2A28AAB38D008908CB /* Date.swift in Sources */,
 				F8622D2428AA9C5F008908CB /* SelectEmotionPageView.swift in Sources */,
 				F8622D2528AA9C5F008908CB /* EndPageView.swift in Sources */,
+				D164666628EDECFD008E3261 /* OnboardingPageView.swift in Sources */,
 				8981172C28A6663200BAB3E2 /* Font.swift in Sources */,
 				F83BB7EE28B63EF9005F2D71 /* DistortionPageManager.swift in Sources */,
 				7A17093A2898D466001E98D5 /* CalendarView.swift in Sources */,
@@ -357,6 +372,7 @@
 				7A3BA305289C037A002ABB95 /* DateGridView.swift in Sources */,
 				F8622D1728AA9C3B008908CB /* NSManagedObject.swift in Sources */,
 				F8622D1928AA9C3B008908CB /* Note.swift in Sources */,
+				D164666328EDEAAA008E3261 /* OnboardingTabView.swift in Sources */,
 				7AD34AAD288F932E00E92B73 /* AhttiaryApp.swift in Sources */,
 				8906A86C28ADE19400C1E254 /* MainViewManager.swift in Sources */,
 				F8622D2C28AAB724008908CB /* ChangePageButton.swift in Sources */,
@@ -489,11 +505,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "아띠어리.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ahttiary/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 4445N32BLY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ahttiary/Info.plist;
@@ -511,7 +527,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtd.ahttiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ahttiaryDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -524,11 +540,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "아띠어리.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ahttiary/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 4445N32BLY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ahttiary/Info.plist;
@@ -546,7 +562,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtd.ahttiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ahttiaryDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

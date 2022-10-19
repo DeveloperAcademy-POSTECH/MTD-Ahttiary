@@ -22,5 +22,7 @@ enum ScreenSize {
     
     static var questionMessageBoxHeight: CGFloat { questionMessageBoxWidth * (1 / 2) }
     static var questionMessageBoxWidth: CGFloat { ScreenSize.fullWidth * (2 / 3) }
+    
+    static var onboardingImageWidth: CGFloat { fullWidth * (3 / 5) }
 }
 
