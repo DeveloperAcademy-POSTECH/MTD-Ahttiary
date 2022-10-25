@@ -45,12 +45,12 @@ struct ReadNoteNavigationBar: View {
                     .foregroundColor(Color.Custom.carrotGreen)
                     .font(.custom(Font.Custom.calendarBold, size: 18))
                     .onTapGesture {
-                        if isEditing {
+                        if !isEditing {
+                            isEditing.toggle()
                             editingText = "수정완료"
-                            isEditing = false
                         } else {
+                            isEditing.toggle()
                             editingText = "수정하기"
-                            isEditing = true
                         }
                     }
             }
