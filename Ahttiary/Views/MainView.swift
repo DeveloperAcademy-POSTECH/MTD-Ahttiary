@@ -29,7 +29,7 @@ struct MainView: View {
             .padding(.bottom, 60)
             
             Button {
-                mainViewModel.changeCurrentPage()
+                mainViewModel.changeCurrentPage(date: dateManager.selectedDate)
             } label: {
                 ZStack (alignment: .center) {
                     RoundedRectangle(cornerRadius: 10)

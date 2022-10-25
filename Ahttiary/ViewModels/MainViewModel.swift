@@ -29,8 +29,21 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func changeCurrentPage() {
+    func changeCurrentNote(with selectedDate: Date) {
+        var selectedNote: FetchedResults<Note>.Element? = nil
+        
+        selectedNote = noteArray.filter { $0.dateCreated.convertToDetailedDate() == selectedDate.convertToDetailedDate() }.first
+        
+        if selectedNote != nil {
+            DispatchQueue.main.async { self.currentNote = selectedNote }
+        } else {
+            DispatchQueue.main.async { self.currentNote = nil }
+        }
+    }
+    
+    func changeCurrentPage(date: Date) {
         if currentNote == nil {
+            createNote(date)
             goToWritingView()
         } else {
             goToReadingView()
