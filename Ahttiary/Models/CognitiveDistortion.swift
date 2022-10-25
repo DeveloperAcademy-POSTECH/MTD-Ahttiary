@@ -110,7 +110,7 @@ struct CognitiveDistortion {
         case "labeling":
             return "낙인"
         default:
-            return "낙인"
+            return ""
         }
     }
 }
