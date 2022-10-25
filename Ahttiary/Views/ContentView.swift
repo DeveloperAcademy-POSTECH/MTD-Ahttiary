@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var mainViewManager: MainViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
     @EnvironmentObject var dateManager: DateManager
+    // fetch notes
     @FetchRequest(fetchRequest: Note.allNotesFR())
     private var notes: FetchedResults<Note>
     
@@ -18,7 +19,7 @@ struct ContentView: View {
     }// body
     
     @ViewBuilder private var contentView: some View {
-        switch (mainViewManager.pageName) {
+        switch (mainViewModel.pageName) {
         case .main:
             MainView()
                 .onAppear {
