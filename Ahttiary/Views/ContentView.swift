@@ -21,10 +21,19 @@ struct ContentView: View {
         switch (mainViewManager.pageName) {
         case .main:
             MainView()
+                .onAppear {
+                    mainViewModel.updateNoteArray(notes)
+                    if mainViewModel.currentNote == nil {
+                        mainViewModel.changeCurrentNote(with: Date())
+                    } else {
+                        mainViewModel.changeCurrentNote(with: dateManager.selectedDate)
+                    }
+                    
+                }
         case .writing:
-            mainViewManager.createNote(dateManager.selectedDate)
+            WriteNoteView(note: mainViewModel.currentNote)
         case .reading:
-            mainViewManager.readSelectedNote(dateManager.selectedDate)
+            ReadNoteView(note: mainViewModel.currentNote!)
         }
     }
 }// ContentView
