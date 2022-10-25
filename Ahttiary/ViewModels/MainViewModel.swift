@@ -17,18 +17,6 @@ final class MainViewModel: ObservableObject {
         currentNote == nil ? "감정 기록 쓰기" : "감정 기록 읽기"
     }
     
-    func changeCurrentNote(with selectedDate: String) {
-        var selectedNote: FetchedResults<Note>.Element? = nil
-        
-        selectedNote = noteArray.filter { $0.dateCreated.convertToDetailedDate() == selectedDate }.first
-        
-        if selectedNote != nil {
-            DispatchQueue.main.async { self.currentNote = selectedNote }
-        } else {
-            DispatchQueue.main.async { self.currentNote = nil }
-        }
-    }
-    
     func changeCurrentNote(with selectedDate: Date) {
         var selectedNote: FetchedResults<Note>.Element? = nil
         
@@ -63,25 +51,28 @@ final class MainViewModel: ObservableObject {
         withAnimation { pageName = .reading }
     }
     
-    func updateNote(_ note: FetchedResults<Note>.Element?) {
+    func appendNoteToNoteArray(_ note: FetchedResults<Note>.Element?) {
         guard let note = note else { return }
         self.noteArray.append(note)
     }
     
-    func createNote(_ createdDate: Date = Date()) -> some View {
-        let newNote = Note.getNewNote(createdDate)
-        return WriteNoteView(note: newNote)
+    func updateNoteArray(_ notes: FetchedResults<Note>) {
+        noteArray = []
+        for note in notes { appendNoteToNoteArray(note) }
     }
     
-    func readSelectedNote(_ createdDate: Date = Date()) -> some View {
-        var selectedNoteView: ReadNoteView? = nil
-        
-        if currentNote != nil,
-           currentNote?.dateCreated.convertToDetailedDate() == createdDate.convertToDetailedDate() {
-            selectedNoteView = ReadNoteView(note: currentNote!)
-        }
-        
-        return selectedNoteView
+    func appendAllNotesToNoteArray(_ notes: FetchedResults<Note>) {
+        // Append all notes to note array.
+        for note in notes { appendNoteToNoteArray(note) }
+    }
+    
+    func createNote(_ createdDate: Date = Date()){
+        // 입력받은 날짜의 노트 생성
+        let newNote = Note.getNewNote(createdDate)
+        // noteArray에 새 노트 추가
+        appendNoteToNoteArray(newNote)
+        // currentNote를 새 노트로 변경
+        currentNote = newNote
     }
 } // MainViewManager
 
