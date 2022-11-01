@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct CalendarCell: View {
-    @EnvironmentObject var dateManager: DateViewModel
-    @EnvironmentObject var mainViewManager: MainViewManager
+    @EnvironmentObject var dateManager: DateManager
+    @EnvironmentObject var mainViewModel: MainViewModel
     @FetchRequest(fetchRequest: Note.allNotesFR())
     var notes: FetchedResults<Note>
+    
     let count: Int
     let startingPosition: Int
     let totalDaysInMonth: Int
@@ -25,13 +26,13 @@ struct CalendarCell: View {
                 Circle()
                     .foregroundColor(dateManager.verifySelectedDay(dayOfThisCell) ? Color.Custom.carrotGreen : .clear)
 
-                if detectNoteData() { Image("carrot").scaleEffect(0.75) }
+                if detectNoteCreatedInDayOfThisCell() { Image("carrot").scaleEffect(0.75) }
                 
                 Text(fetchMonthStruct().day())
                     .font(.custom(Font.Custom.weekDay, size: 14))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundColor(
-                        detectNoteData()
+                        detectNoteCreatedInDayOfThisCell()
                         ? dateManager.verifySelectedDay(dayOfThisCell)
                             ? .white
                             : .black
@@ -43,13 +44,10 @@ struct CalendarCell: View {
                     )
                     .onTapGesture {
                         withAnimation { dateManager.updateSelectedDate(dayOfThisCell) }
-                        if detectNoteData() { linkNoteCoreData() }
-                        else { mainViewManager.updateNote(nil)}
+                        
+                        mainViewModel.changeCurrentNote(with: dateManager.selectedDate)
                     }
                     .onAppear {
-                        if dateManager.verifySelectedDay(dayOfThisCell) {
-                            if detectNoteData() { linkNoteCoreData() }
-                        }
                     }
                     .disabled(dateManager.verifyFutureDate(dayOfThisCell))
             }
@@ -75,7 +73,9 @@ struct CalendarCell: View {
         return MonthStruct(monthType: .current, dayInt: day)
     }
     
-    private func detectNoteData() -> Bool {
+    private func detectNoteCreatedInDayOfThisCell() -> Bool {
+        // 노트 생성일과 현재 선택일이 일치하면 true 반환
+        // 일치하는 노트가 하나라도 있다면 true, 그렇지 않으면 false 반환
         for note in notes {
             guard let dateCreated = note.dateCreated_ else { return false }
             let createdDateOfNote = dateCreated.convertToDetailedDate()
@@ -93,11 +93,6 @@ struct CalendarCell: View {
         
         return false
     }
-    
-    private func linkNoteCoreData() {
-        for note in notes { mainViewManager.updateNote(note) }
-    }
-    
 }// CalendarCell
 
 struct CalendarCell_Previews: PreviewProvider {

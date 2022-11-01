@@ -10,24 +10,27 @@ import SwiftUI
 struct SelectEmotionPageView: View {
     
     @ObservedObject var noteManager: NoteManager
-    @EnvironmentObject var dateManager: DateViewModel
-    @Binding var answer: String
+    @EnvironmentObject var dateManager: DateManager
+    @State var answer: String
     @FocusState var isTextFieldsFocused: Bool
-    let imageName: String
-    var draftNote: DraftNote
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    init(noteManager: NoteManager) {
+        self.noteManager = noteManager
+        self.answer = noteManager.getCurrentPageAnswer()
+    }
     
     var body: some View {
         VStack {
             CustomNavigationBar(
                 displayDate: dateManager.selectedDate,
-                draftNote: draftNote
+                draftNote: noteManager.draftNote
             )
-                .padding()
+            .padding()
             
             // 아띠와 말풍선
             HStack(alignment: .center) {
-                Text(noteManager.randomComments[noteManager.pageNumber])
+                Text(noteManager.getCurrentPageComment())
                     .frame(
                         height: ScreenSize.questionMessageBoxHeight,
                         alignment: .center
@@ -36,7 +39,7 @@ struct SelectEmotionPageView: View {
                     .font(.custom(Font.Custom.comment, size: 20))
                     .padding()
                 
-                Image(imageName)
+                Image(noteManager.getCurrentPageImageName())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: ScreenSize.ahttyWriterWidth)
@@ -46,7 +49,7 @@ struct SelectEmotionPageView: View {
             // 감정 선택 그리드
             LazyVGrid(columns: gridItemLayout) {
                 ForEach(
-                    noteManager.pageNumber == 2 ? EmotionStruct.firstEmotionArray : EmotionStruct.secondEmotionArray,
+                    EmotionStruct.firstEmotionArray,
                     id: \.self
                 ) { emotion in
                     EmotionCard(answer: $answer, emotion: emotion)
@@ -55,17 +58,21 @@ struct SelectEmotionPageView: View {
             
             Spacer()
             
-            Text(noteManager.fetchCurrentPage() + "/7")
-                .font(.custom(Font.Custom.comment, size: 20))
-            
             // 페이지 전환 버튼
             HStack(spacing: 20) {
-                ChangePageButton("이전") { noteManager.goToPreviousPage() }
-                ChangePageButton("다음") { noteManager.goToNextPage() }
+                ChangePageButton("이전") {
+                    noteManager.updateDraftNote(answer: answer)
+                    Note.updateNote(using: noteManager.draftNote)
+                    noteManager.goToPreviousPage()
+                }
+                ChangePageButton("다음") {
+                    noteManager.updateDraftNote(answer: answer)
+                    Note.updateNote(using: noteManager.draftNote)
+                    noteManager.goToNextPage()
+                }
                 .disabled(answer.isEmpty)
                 .opacity(answer.isEmpty ? 0.7 : 1)
             }
-            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal)
@@ -92,7 +99,7 @@ struct EmotionCard: View {
                             .scaleEffect(1.2)
                             .padding(.top, 20)
                         
-                        Text(EmotionStruct().emotionDictionary[emotion]!)
+                        Text(EmotionStruct.emotionToDescription[emotion]!)
                             .foregroundColor(.black)
                             .font(.custom(Font.Custom.calendarBold, size: 17))
                             .padding(.top, 5)

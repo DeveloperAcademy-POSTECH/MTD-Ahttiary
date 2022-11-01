@@ -8,81 +8,48 @@
 import SwiftUI
 
 struct WriteNoteView: View {
-    @ObservedObject var noteManager: NoteManager = NoteManager()
-    @StateObject private var draftNote: DraftNote
+    @ObservedObject var noteManager: NoteManager
     
-    init(note: Note) {
-        _draftNote = StateObject(wrappedValue: DraftNote(note: note))
+    init(note: Note?) {
+        _noteManager = ObservedObject(wrappedValue: NoteManager(note: note ?? Note.getNewNote()))
     }
     
     var body: some View {
         Group {
-            switch noteManager.pageNumber {
-            case 0:
-                WritePageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.firstAnswer,
-                    draftNote: draftNote,
-                    imageName: "noteAhtty"
-                )
-            case 1:
-                WritePageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.secondAnswer,
-                    draftNote: draftNote,
-                    imageName: "bbaeggomAhtty"
-                )
-            case 2:
-                SelectEmotionPageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.firstEmotion,
-                    imageName: "selectinAhtty",
-                    draftNote: draftNote
-                )
-            case 3:
-                WritePageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.thirdAnswer,
-                    draftNote: draftNote,
-                    imageName: "questionAhtty"
-                )
-            case 4:
-                SelectCognitiveDistortionPageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.fourthAnswer,
-                    draftNote: draftNote,
-                    imageName: "helloAhtty"
-                )
-            case 5:
-                // 합리적 반응 도출
-                WritePageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.fifthAnswer,
-                    draftNote: draftNote,
-                    imageName: "thinkinAhtty"
-                )
-            case 6:
-                // 두 번째 감정 체크
-                SelectEmotionPageView(
-                    noteManager: noteManager,
-                    answer: $draftNote.secondEmotion,
-                    imageName: "selectinAhtty",
-                    draftNote: draftNote
-                )
-            case 7:
-                // 마지막 페이지(내일도 즐거운 하루 보내자!)
-                EndPageView(
-                    noteManager: noteManager,
-                    draftNote: draftNote,
-                    imageName: "helloAhtty"
-                )
-            default:
-                EmptyView()
+            switch noteManager.currentPage {
+                // 상황 기록
+            case .situation:
+                WritePageView(noteManager: noteManager)
+                
+                // 감정 선택
+            case .selectEmotion:
+                SelectEmotionPageView(noteManager: noteManager)
+                
+                // 긍정적 감정
+            case .describePositiveExperience:
+                WritePageView(noteManager: noteManager)
+                
+            case .enhancePositiveExperience:
+                WritePageView(noteManager: noteManager)
+                
+                // 부정적 감정
+            case .automaticThought:
+                WritePageView(noteManager: noteManager)
+                
+            case .cognitiveDistortion:
+                SelectCognitiveDistortionPageView(noteManager: noteManager)
+                
+            case .rationalization:
+                WritePageView(noteManager: noteManager)
+                
+                // 마지막 페이지
+            case .lastPage:
+                LastPageView(noteManager: noteManager)
             }
         }
         .background(Color.Custom.background)
-        .onChange(of: noteManager.pageNumber) { _ in
-            Note.updateNote(using: draftNote)
+        .onDisappear {
+            Note.updateNote(using: noteManager.draftNote)
         }
     } // End of body
 } // WriteNoteView
