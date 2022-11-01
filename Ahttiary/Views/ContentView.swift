@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
+    @EnvironmentObject var dateManager: DateManager
+    // fetch notes
+    @FetchRequest(fetchRequest: Note.allNotesFR())
+    private var notes: FetchedResults<Note>
+    
     var body: some View {
-        VStack {
-            Image("ahtty")
-                .resizable()
-                .frame(width: 300, height: 300)
-                
-            Text("하루의 끝 당신의 곁엔 아띠가 있어요.")
-                .padding()
-        }
+        contentView
     }// body
+    
+    @ViewBuilder private var contentView: some View {
+        switch (mainViewModel.pageName) {
+        case .main:
+            MainView()
+                .onAppear {
+                    mainViewModel.updateNoteArray(notes)
+                    if mainViewModel.currentNote == nil {
+                        mainViewModel.changeCurrentNote(with: Date())
+                    } else {
+                        mainViewModel.changeCurrentNote(with: dateManager.selectedDate)
+                    }
+                    
+                }
+        case .writing:
+            WriteNoteView(note: mainViewModel.currentNote)
+        case .reading:
+            ReadNoteView(note: mainViewModel.currentNote!)
+        }
+    }
 }// ContentView
 
 struct ContentView_Previews: PreviewProvider {
