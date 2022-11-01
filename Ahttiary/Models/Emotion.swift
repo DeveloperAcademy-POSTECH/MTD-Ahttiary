@@ -50,7 +50,7 @@ struct EmotionStruct {
         case "happy":
             return "행복해요"
         default:
-            return "행복해요"
+            return ""
         }
     }
 }

@@ -10,8 +10,8 @@ import SwiftUI
 struct WriteNoteView: View {
     @ObservedObject var noteManager: NoteManager
     
-    init(note: Note) {
-        _noteManager = ObservedObject(wrappedValue: NoteManager(note: note))
+    init(note: Note?) {
+        _noteManager = ObservedObject(wrappedValue: NoteManager(note: note ?? Note.getNewNote()))
     }
     
     var body: some View {

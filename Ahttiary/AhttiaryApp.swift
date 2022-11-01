@@ -11,14 +11,14 @@ import SwiftUI
 struct AhttiaryApp: App {
     
     @StateObject var persistentStore = PersistentStore.shared
-    @StateObject var dateViewModel: DateManager = DateManager()
-    @StateObject var mainViewManager: MainViewModel = MainViewModel()
+    @StateObject var dateManager: DateManager = DateManager()
+    @StateObject var mainViewModel: MainViewModel = MainViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(dateViewModel)
-                .environmentObject(mainViewManager)
+                .environmentObject(dateManager)
+                .environmentObject(mainViewModel)
                 .environment(\.managedObjectContext, persistentStore.context)
         }
     }
