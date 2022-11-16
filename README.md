@@ -8,7 +8,10 @@
 
 아띠와 함께 감정 다이어리를 적어볼까요?
 
-## 🎉 App
+## 💗 App Store Link
+[App Store](https://apps.apple.com/kr/app/아띠어리/id6444128574?l=en)
+
+## 🎉 Screenshots
 
 <div>
 <img src="https://user-images.githubusercontent.com/88080251/201964155-028da786-467e-4ced-8361-214ca5c58373.png" width="250"/>
